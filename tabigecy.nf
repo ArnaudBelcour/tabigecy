@@ -17,7 +17,7 @@ outputFolder_path = Channel.fromPath(params.outputFolder)
 
 // Help message
 if (params.help) {
-    help = """tabigecy.nf version ${params.manifest.version}: Predict functions of BioGeoChemical Cycle from taxonomic affiliations 
+    help = """tabigecy.nf version ${params.manifest.version}: ${params.manifest.description}
              |Required arguments:
              |  --infile  Location of the input file. [default: ${params.infile}]
              |  --precomputedDB  Location of esmecata precomputed database. [default: ${params.precomputedDB}]
