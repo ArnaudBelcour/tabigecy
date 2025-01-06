@@ -2,6 +2,8 @@
 
 This is a workflow made to perform a run of EsMeCata, bigecyhmm and visualisation creation using Nextflow.
 
+![](tabigecy_diagram.svg)
+
 ## Requirements
 
 - [Nextflow](https://www.nextflow.io/docs/latest/install.html): to run `workflow.nf`

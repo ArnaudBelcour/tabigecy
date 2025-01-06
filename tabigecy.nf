@@ -87,11 +87,14 @@ process visualisation{
 workflow {
     esmecata(input_file_path, precomputedDB_path)
     bigecyhmm(esmecata.out.output_1_esmecata, params.coreBigecyhmm)
+
+    // Check the presence of abundance file (by default no such file).
     if (params.inAbundfile) {
         input_abundance_file_path = Channel.fromPath(params.inAbundfile)
     }
     else {
         input_abundance_file_path = false
     }
+
     visualisation(input_abundance_file_path, esmecata.out.output_1_esmecata, bigecyhmm.out.output_2_bigecyhmm)
 }
