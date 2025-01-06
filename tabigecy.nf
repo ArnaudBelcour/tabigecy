@@ -30,6 +30,7 @@ if (params.help) {
     exit(0)
 }
 
+// Run esmecata on the input file using the precomputed database.
 process esmecata {
     input:
         path input_esmecata
@@ -45,6 +46,7 @@ process esmecata {
     """
 }
 
+// Run bigecyhmm on the predictions made by esmecata.
 process bigecyhmm {
     input:
         path esmecata_output_folder
@@ -60,6 +62,7 @@ process bigecyhmm {
     """
 }
 
+// Create figures from esmecata and bigecyhmm output folders.
 process visualisation{
     input:
         val input_abundance_file_path
