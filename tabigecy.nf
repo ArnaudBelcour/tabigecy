@@ -17,7 +17,7 @@ outputFolder_path = Channel.fromPath(params.outputFolder)
 
 // Help message
 if (params.help) {
-    help = """tabigecy.nf: Predict functions of BioGeoChemical Cycle from taxonomic affiliations 
+    help = """tabigecy.nf version ${params.manifest.version}: Predict functions of BioGeoChemical Cycle from taxonomic affiliations 
              |Required arguments:
              |  --infile  Location of the input file. [default: ${params.infile}]
              |  --precomputedDB  Location of esmecata precomputed database. [default: ${params.precomputedDB}]
@@ -31,6 +31,9 @@ if (params.help) {
     // Print the help with the stripped margin and exit
     println(help)
     exit(0)
+}
+else {
+    println("""Launch tabigecy version ${params.manifest.version}.""")
 }
 
 // Run esmecata on the input file using the precomputed database.
