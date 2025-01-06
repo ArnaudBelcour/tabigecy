@@ -7,6 +7,8 @@ params.precomputedDB = "$launchDir/esmecata_database.zip"
 params.outputFolder = "$launchDir/output_folder"
 params.inAbundfile = false
 
+params.coreBigecyhmm = 1
+
 input_file_path = Channel.fromPath(params.infile)
 
 precomputedDB_path = Channel.fromPath(params.precomputedDB)
@@ -23,6 +25,7 @@ if (params.help) {
              |
              |Optional arguments:
              |  --inAbundfile  Location of the abundance file. [default: ${params.inAbundfile}]
+             |  --coreBigecyhmm  Number of core for bigecyhmm. [default: ${params.coreBigecyhmm}]
              |  -w            The NextFlow work directory. Delete the directory once the process
              |                is finished [default: ${workDir}]""".stripMargin()
     // Print the help with the stripped margin and exit
@@ -50,6 +53,7 @@ process esmecata {
 process bigecyhmm {
     input:
         path esmecata_output_folder
+        val core_bigecyhmm
 
     output:
         path 'output_2_bigecyhmm', emit: output_2_bigecyhmm, type: "dir"
@@ -58,7 +62,7 @@ process bigecyhmm {
 
     script:
     """
-    bigecyhmm  -i ${esmecata_output_folder}/1_clustering/reference_proteins_consensus_fasta -o output_2_bigecyhmm
+    bigecyhmm  -i ${esmecata_output_folder}/1_clustering/reference_proteins_consensus_fasta -o output_2_bigecyhmm -c ${core_bigecyhmm}
     """
 }
 
@@ -74,10 +78,6 @@ process visualisation{
 
     publishDir "${params.outputFolder}", mode: 'copy'
 
-    if (params.inAbundfile) {
-        input_abundance_file_path = Channel.fromPath(params.inAbundfile)
-    }
-
     script:
     """
     bigecyhmm_visualisation --abundance-file ${input_abundance_file_path} --esmecata ${esmecata_output_folder} --bigecyhmm ${bigecyhmm_output_folder} -o output_3_visualisation
@@ -86,6 +86,12 @@ process visualisation{
 
 workflow {
     esmecata(input_file_path, precomputedDB_path)
-    bigecyhmm(esmecata.out.output_1_esmecata)
-    visualisation(params.inAbundfile, esmecata.out.output_1_esmecata, bigecyhmm.out.output_2_bigecyhmm)
+    bigecyhmm(esmecata.out.output_1_esmecata, params.coreBigecyhmm)
+    if (params.inAbundfile) {
+        input_abundance_file_path = Channel.fromPath(params.inAbundfile)
+    }
+    else {
+        input_abundance_file_path = false
+    }
+    visualisation(input_abundance_file_path, esmecata.out.output_1_esmecata, bigecyhmm.out.output_2_bigecyhmm)
 }
