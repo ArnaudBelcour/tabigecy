@@ -12,9 +12,14 @@ A nextflow workflow created to predict functions involving major biogeochemical 
 
 ## Usage
 
+This workflow can be called by nextflow in two ways:
+
+- by downloading this repository and call the `tabigecy.nf` file.
+- by calling this repository in the nextflow command with `nextflow run ArnaudBelcour/tabigecy ...`.
+
 You can print the help with the following command:
 
-`nextflow run tabigecy.nf --help`
+`nextflow run ArnaudBelcour/tabigecy --help`
 
 By default, the script will be using files in the directory where the script has been launched. It uses 3 files:
 - EsMeCaTa input file.
@@ -26,7 +31,7 @@ Optionally, it can take:
 At the end, it will create an output folder containing the output folders of EsMeCaTa, the one of bigecyhmm and the visualisation output folder.
 To do this on your own file you can specify the input files with the command line:
 
-`nextflow run tabigecy.nf --infile esmecata_input_file.tsv --inAbundfile abundance.tsv --precomputedDB esmecata_database.zip --visualisationScript create_bigecyhmm_plot.py --outputFolder output_folder --coreBigecyhmm 5`
+`nextflow run ArnaudBelcour/tabigecy --infile esmecata_input_file.tsv --inAbundfile abundance.tsv --precomputedDB esmecata_database.zip --visualisationScript create_bigecyhmm_plot.py --outputFolder output_folder --coreBigecyhmm 5`
 
 ## Output
 

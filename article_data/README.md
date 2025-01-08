@@ -14,6 +14,6 @@ A second dataset was considered from the article of [Schwab et al. (2022)](https
 
 Each dataset can be used by giving the esmecata input file (either `bordenave_et_al_2018.csv` or `schwab_et_al_2022.tsv `) to the parameter `--infile` and the abundance file (either `bordenave_et_al_2018_abundance.csv` or `schwab_et_al_2022_abundance.tsv`) to the parameter `--inAbundfile`. The precomputed database is required and can be given with the parameter `--precomputedDB`.
 
-`nextflow run tabigecy.nf --infile article_data/schwab_et_al_2022.tsv --inAbundfile article_data/schwab_et_al_2022_abundance.tsv --coreBigecyhmm xx --precomputedDB /path/to/esmecata_database.zip --outputFolder output_folder_schwab_et_al_2022`
+`nextflow run ArnaudBelcour/tabigecy --infile article_data/schwab_et_al_2022.tsv --inAbundfile article_data/schwab_et_al_2022_abundance.tsv --coreBigecyhmm xx --precomputedDB /path/to/esmecata_database.zip --outputFolder output_folder_schwab_et_al_2022`
 
 To decrease the runtimes of the workflow, it is advised to give severail cores to `--coreBigecyhmm xx`. With 5 cores, the runtime of the workflow was around 13 minutes.
