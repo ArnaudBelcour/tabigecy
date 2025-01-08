@@ -14,7 +14,7 @@ A nextflow workflow created to predict functions involving major biogeochemical 
 
 This workflow can be called by nextflow in two ways:
 
-- by downloading this repository and call the `tabigecy.nf` file.
+- by downloading this repository and calling the `tabigecy.nf` file.
 - by calling this repository in the nextflow command with `nextflow run ArnaudBelcour/tabigecy ...`.
 
 You can print the help with the following command:
