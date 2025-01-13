@@ -22,12 +22,32 @@ You can print the help with the following command:
 `nextflow run ArnaudBelcour/tabigecy --help`
 
 By default, the script will be using files in the directory where the script has been launched. It uses 3 files:
-- EsMeCaTa input file.
-- EsMeCaTa precomputed database.
+- EsMeCaTa input file, looking like this:
+
+| observation_name | taxonomic_affiliation                                                                                        |
+|------------------|--------------------------------------------------------------------------------------------------------------|
+| Cluster_1        | Bacteria;Spirochaetes;Spirochaetia;Spirochaetales;Spirochaetaceae;Sphaerochaeta;unknown species              |
+| Cluster_2        | Bacteria;Chloroflexi;Anaerolineae;Anaerolineales;Anaerolineaceae;ADurb.Bin120;unknown species                |
+| Cluster_3        | Bacteria;Cloacimonetes;Cloacimonadia;Cloacimonadales;Cloacimonadaceae;Candidatus Cloacimonas;unknown species |
+| Cluster_4        | Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Rikenellaceae;Rikenellaceae RC9 gut group;unknown species   |
+| Cluster_5        | Bacteria;Cloacimonetes;Cloacimonadia;Cloacimonadales;Cloacimonadaceae;W5;unknown species                     |
+| Cluster_6        | Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Dysgonomonadaceae;unknown genus;unknown species             |
+| Cluster_7        | Bacteria;Firmicutes;Clostridia;Clostridiales;Clostridiaceae;Clostridium;unknown species                      |
+
+- EsMeCaTa precomputed database, [available here](https://doi.org/10.5281/zenodo.13354073).
 
 Optionally, it can take:
-- Abundance file containing the abundance in different samples for the different rows of the EsMeCaTa input file.
+- Abundance file containing the abundance in different samples for the different rows of the EsMeCaTa input file, looking like this:
 
+| observation_name | sample 1 | sample 2 | sample 3 |
+|------------------|----------|----------|----------|
+| Cluster_1        | 50       |  400     | 2300     |
+| Cluster_2        | 1000     |   56     | 488      |
+| Cluster_3        | 2000     |  597     |  20      |
+| Cluster_4        | 0        |  1200    | 600      |
+| Cluster_5        | 400      |  420     | 380      |
+| Cluster_6        | 4858     |  2478    | 1878     |
+| Cluster_7        | 1        |  24      |  75      |
 
 
 At the end, it will create an output folder containing the output folders of EsMeCaTa, the one of bigecyhmm and the visualisation output folder.
