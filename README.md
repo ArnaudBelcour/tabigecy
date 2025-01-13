@@ -53,7 +53,7 @@ Optionally, it can take:
 At the end, it will create an output folder containing the output folders of EsMeCaTa, the one of bigecyhmm and the visualisation output folder.
 To do this on your own file you can specify the input files with the command line:
 
-`nextflow run ArnaudBelcour/tabigecy --infile esmecata_input_file.tsv --inAbundfile abundance.tsv --precomputedDB esmecata_database.zip --visualisationScript create_bigecyhmm_plot.py --outputFolder output_folder --coreBigecyhmm 5`
+`nextflow run ArnaudBelcour/tabigecy --infile esmecata_input_file.tsv --inAbundfile abundance.tsv --precomputedDB esmecata_database.zip --outputFolder output_folder --coreBigecyhmm 5`
 
 ## Output
 
