@@ -1,10 +1,11 @@
 # Changelog
 
-# tabigecy v0.1.0 (2025-01-08)
+# tabigecy v0.1.0 (2025-01-15)
 
 ## Add
 
-* First version of tabigecy.
+* Changelog.
+* Workflow pictures.
 
 ## Modify
 
