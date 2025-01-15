@@ -2,7 +2,7 @@
 
 A nextflow workflow created to predict functions involving major biogeochemical cycles (carbon, sulfur, nitrogen) for taxonomic affiliations (that can be created from metabarcoding or metagenomic sequencing). It relies on [EsMeCaTa](https://github.com/AuReMe/esmecata) and [bigecyhmm](https://github.com/ArnaudBelcour/bigecyhmm).
 
-![](tabigecy_diagram.svg)
+![](pictures/workflow_bigecyhmm.svg)
 
 ## Requirements
 
