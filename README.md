@@ -21,8 +21,8 @@ You can print the help with the following command:
 
 `nextflow run ArnaudBelcour/tabigecy --help`
 
-By default, the script will be using files in the directory where the script has been launched. It uses 3 files:
-- EsMeCaTa input file, looking like this:
+Tabigecy workflow expects three mandatory inputs:
+- `--infile` expects a tabulated file containign input taxonomic affiliations for EsMeCaTa, looking like this:
 
 | observation_name | taxonomic_affiliation                                                                                        |
 |------------------|--------------------------------------------------------------------------------------------------------------|
@@ -34,10 +34,11 @@ By default, the script will be using files in the directory where the script has
 | Cluster_6        | Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Dysgonomonadaceae;unknown genus;unknown species             |
 | Cluster_7        | Bacteria;Firmicutes;Clostridia;Clostridiales;Clostridiaceae;Clostridium;unknown species                      |
 
-- EsMeCaTa precomputed database, [available here](https://doi.org/10.5281/zenodo.13354073).
+- `--precomputedDB` expects the zip file containing EsMeCaTa precomputed database, [available here](https://doi.org/10.5281/zenodo.13354073).
+- `--outputFolder` expects a path where the output will be generated.
 
-Optionally, it can take:
-- Abundance file containing the abundance in different samples for the different rows of the EsMeCaTa input file, looking like this:
+There are optional arguments:
+- `--inAbundfile`: expects and abundance (tabulated) file containing the abundance in different samples for the different rows of the EsMeCaTa input file, looking like this:
 
 | observation_name | sample 1 | sample 2 | sample 3 |
 |------------------|----------|----------|----------|
@@ -49,6 +50,8 @@ Optionally, it can take:
 | Cluster_6        | 4858     |  2478    | 1878     |
 | Cluster_7        | 1        |  24      |  75      |
 
+
+- `--coreBigecyhmm`: the number of cores given to bigecyhmm for multiprocessing.
 
 At the end, it will create an output folder containing the output folders of EsMeCaTa, the one of bigecyhmm and the visualisation output folder.
 To do this on your own file you can specify the input files with the command line:
