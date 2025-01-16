@@ -38,7 +38,7 @@ Tabigecy workflow expects three mandatory inputs:
 - `--outputFolder` expects a path where the output will be generated.
 
 There are optional arguments:
-- `--inAbundfile`: expects and abundance (tabulated) file containing the abundance in different samples for the different rows of the EsMeCaTa input file, looking like this:
+- `--inAbundfile`: expects a tabulated file containing the abundances in different samples for the different rows of the EsMeCaTa input file, looking like this:
 
 | observation_name | sample 1 | sample 2 | sample 3 |
 |------------------|----------|----------|----------|
