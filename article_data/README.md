@@ -4,7 +4,7 @@ The input files used for the article experiments are available in this folder.
 
 ## Dataset from Bordenave et al.
 
-A first dataset from the article of [Bordenave et al. (2013)](https://www.sciencedirect.com/science/article/pii/S0964830512002090) was used. The data comes from the Table 2 (a csv file representing this table is available at `original_data/bordenave_et_al_2018_data.csv`).
+A first dataset from the article of [Bordenave et al. (2013)](https://www.sciencedirect.com/science/article/pii/S0964830512002090) was used. The data comes from the Table 2 (a csv file representing this table is available at `original_data/bordenave_et_al_2013_data.csv`).
 
 ## Dataset from Schwab et al.
 
@@ -12,7 +12,7 @@ A second dataset was considered from the article of [Schwab et al. (2022)](https
 
 ## Usage
 
-Each dataset can be used by giving the esmecata input file (either `bordenave_et_al_2018.tsv` or `schwab_et_al_2022.tsv `) to the parameter `--infile` and the abundance file (either `bordenave_et_al_2018_abundance.csv` or `schwab_et_al_2022_abundance.tsv`) to the parameter `--inAbundfile`. The precomputed database is required and can be given with the parameter `--precomputedDB`.
+Each dataset can be used by giving the esmecata input file (either `bordenave_et_al_2013.tsv` or `schwab_et_al_2022.tsv `) to the parameter `--infile` and the abundance file (either `bordenave_et_al_2013_abundance.csv` or `schwab_et_al_2022_abundance.tsv`) to the parameter `--inAbundfile`. The precomputed database is required and can be given with the parameter `--precomputedDB`.
 
 `nextflow run ArnaudBelcour/tabigecy --infile article_data/schwab_et_al_2022.tsv --inAbundfile article_data/schwab_et_al_2022_abundance.tsv --coreBigecyhmm xx --precomputedDB /path/to/esmecata_database.zip --outputFolder output_folder_schwab_et_al_2022`
 

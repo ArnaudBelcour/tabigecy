@@ -59,7 +59,7 @@ To do this on your own file you can specify the input files with the command lin
 `nextflow run ArnaudBelcour/tabigecy --infile esmecata_input_file.tsv --inAbundfile abundance.tsv --precomputedDB esmecata_database.zip --outputFolder output_folder --coreBigecyhmm 5`
 
 You can find two example of input files in the `article_data` folder, associated with the dataset used in the article of Tabigecy:
-- Bordenave et al. dataset: `bordenave_et_al_2018.tsv` (EsMeCaTa input file, for argument `--infile`) and `bordenave_et_al_2018_abundance.csv` (abundance file for argument `--inAbundfile`).
+- Bordenave et al. dataset: `bordenave_et_al_2013.tsv` (EsMeCaTa input file, for argument `--infile`) and `bordenave_et_al_2013_abundance.csv` (abundance file for argument `--inAbundfile`).
 - Schwab et al. dataset: `schwab_et_al_2022.tsv` (EsMeCaTa input file, for argument `--infile`) and `schwab_et_al_2022_abundance.tsv` (abundance file for argument `--inAbundfile`)
 
 ## Output
