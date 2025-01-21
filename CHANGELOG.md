@@ -1,5 +1,11 @@
 # Changelog
 
+# tabigecy v0.1.1 (2025-01-21)
+
+## Add
+
+* Check for missing required argument.
+
 # tabigecy v0.1.0 (2025-01-15)
 
 ## Add

@@ -2,18 +2,12 @@ params.str = 'EsMeCaTa + bigecyhmm + visualisation'
 
 // Set input variables
 params.help = false
-params.infile = "$launchDir/test_data/buchnera_workflow.tsv"
-params.precomputedDB = "$launchDir/esmecata_database.zip"
-params.outputFolder = "$launchDir/output_folder"
+params.infile = false
+params.precomputedDB = false
+params.outputFolder = false
 params.inAbundfile = false
 
 params.coreBigecyhmm = 1
-
-input_file_path = Channel.fromPath(params.infile)
-
-precomputedDB_path = Channel.fromPath(params.precomputedDB)
-
-outputFolder_path = Channel.fromPath(params.outputFolder)
 
 // Help message
 if (params.help) {
@@ -35,6 +29,32 @@ if (params.help) {
 else {
     println("""Launch tabigecy version ${params.manifest.version}.""")
 }
+
+// Check input required argument.
+if (params.infile) {
+    input_file_path = Channel.fromPath(params.infile)
+}
+else{
+    println("Missing --infile argument. Add the path to the input file for esmecata. You can see the help with --help for more information.")
+    exit(0)
+}
+
+if (params.precomputedDB) {
+    precomputedDB_path = Channel.fromPath(params.precomputedDB)
+}
+else{
+    println("Missing --precomputedDB argument. Add the path to esmecata precomputed database. You can see the help with --help for more information.")
+    exit(0)
+}
+
+if (params.outputFolder) {
+    outputFolder_path = Channel.fromPath(params.outputFolder)
+}
+else{
+    println("Missing --outputFolder argument. Add the path to the output folder. You can see the help with --help for more information.")
+    exit(0)
+}
+
 
 // Run esmecata on the input file using the precomputed database.
 process esmecata {
