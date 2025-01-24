@@ -3,8 +3,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import os
 
-from bigecyhmm.visualisation import read_abundance_file
-
 plt.rcParams['figure.figsize'] = [40, 20]
 plt.rc('font', size=30)
 
@@ -30,7 +28,7 @@ for col in input_data_df.columns:
     if 'SC' in col:
         sample_abundance[col] = input_data_df[col].to_dict()
 
-abundance_data = read_abundance_file()
+abundance_data = {}
 sample_tot_abundance = {}
 for col in sample_abundance:
     for observation_name in sample_abundance[col]:
@@ -116,10 +114,10 @@ import plotly.graph_objects as go
 specs = [[{'type': 'polar'}]*2]*2
 fig = make_subplots(rows=2, cols=2, specs=specs)
 
-removed_functions = ['N-S-10:Nitric oxide dismutase', 'O-S-04:Arsenite oxidation', 'S-S-10:Polysulfide reduction']
+removed_functions = ['N-S-10:Nitric oxide dismutase', 'O-S-04:Arsenite oxidation', 'S-S-10:Polysulfide reduction', 'O-S-03:Arsenate reduction', 'O-S-05:Selenate reduction']
 
 kept_functions = [name for name in df_seaborn_abundance['name']
-                    if df_seaborn_abundance[df_seaborn_abundance['name']==name]['ratio'].max()>0]
+                    if df_seaborn_abundance[df_seaborn_abundance['name']==name]['ratio'].max()>0.1]
 row = 1
 col = 1
 color = ['red', 'blue', 'green', 'purple', 'black']
@@ -145,13 +143,13 @@ for sample in sorted(df_seaborn_abundance['sample'].unique()):
         col = 1
         row = row + 1
 
-fig.update_traces(fill='toself')
+#fig.update_traces(fill='toself')
 fig.update_polars(radialaxis=dict(range=[0,1]))
 fig.write_image("bordenave_hmm_polar_chart.png", scale=1, width=1600, height=1200)
 fig.write_html("bordenave_hmm_polar_chart.html")
 
 kept_functions = [name for name in df_seaborn_abundance['name']
-                    if df_seaborn_abundance[df_seaborn_abundance['name']==name]['ratio'].max()>0.1]
+                    if df_seaborn_abundance[df_seaborn_abundance['name']==name]['ratio'].median()>0.1]
 kept_df = df_seaborn_abundance[df_seaborn_abundance['sample']=='SC02']
 kept_functions = kept_df[kept_df['ratio']>=0.1]['name'].tolist()
 kept_df = df_seaborn_abundance[df_seaborn_abundance['sample']=='SC03']

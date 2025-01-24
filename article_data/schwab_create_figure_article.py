@@ -106,7 +106,7 @@ for sample in abundance_data:
         else:
             data_seaborn.append([index, 0, sample])
 
-removed_functions = ['N-S-10:Nitric oxide dismutase', 'O-S-04:Arsenite oxidation', 'S-S-10:Polysulfide reduction']
+removed_functions = ['N-S-10:Nitric oxide dismutase', 'O-S-04:Arsenite oxidation', 'S-S-10:Polysulfide reduction', 'O-S-03:Arsenate reduction', 'O-S-05:Selenate reduction']
 df_seaborn_abundance = pd.DataFrame(data_seaborn_abundance, columns=['name', 'ratio',  'sample'])
 
 from plotly.subplots import make_subplots
