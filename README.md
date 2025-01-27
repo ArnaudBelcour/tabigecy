@@ -7,7 +7,7 @@ A nextflow workflow created to predict functions involving major biogeochemical 
 ## Requirements
 
 - [Nextflow](https://www.nextflow.io/docs/latest/install.html): to run the workflow.
-- esmecata, bigecyhmm and several python packages for visualisation: they can be installed with the following pip command: `pip install esmecata bigecyhmm seaborn pandas plotly kaleido`.
+- [esmecata](https://github.com/AuReMe/esmecata), [bigecyhmm](https://github.com/ArnaudBelcour/bigecyhmm) and several python packages for visualisation: they can be installed with the following pip command: `pip install esmecata bigecyhmm seaborn pandas plotly kaleido`.
 - esmecata precomputed database: it can be downloaded from this [Zenodo archive](https://doi.org/10.5281/zenodo.13354073). This precomputed database size is 4 Gb.
 
 ## Usage
@@ -67,7 +67,7 @@ You can find two example of input files in the `article_data` folder, associated
 An output folder (by default called `output_folder`) is created. It contains three subfolders:
 - `output_1_esmecata`: the output folder of the `esmecata precomputed` command. For more information, look at [EsMeCaTa readme](https://github.com/AuReMe/esmecata?tab=readme-ov-file#esmecata-outputs).
 - `output_2_bigecyhmm`: the output folder of `bigecyhmm` command. For more information, look at [bigecyhmm readme](https://github.com/ArnaudBelcour/bigecyhmm?tab=readme-ov-file#output).
-- `output_3_visualisation`: the output folder for the visualisation of the predictions and (if given) the addition of sample abundances.
+- `output_3_visualisation`: the output folder for the visualisation of the predictions and (if given) the addition of sample abundances. This folder is also presented [bigecyhmm readme](https://github.com/ArnaudBelcour/bigecyhmm?tab=readme-ov-file#output).
 
 ## EsMeCaTa output folder
 
