@@ -58,7 +58,11 @@ To do this on your own file you can specify the input files with the command lin
 
 `nextflow run ArnaudBelcour/tabigecy --infile esmecata_input_file.tsv --inAbundfile abundance.tsv --precomputedDB esmecata_database.zip --outputFolder output_folder --coreBigecyhmm 5`
 
-You can find two example of input files in the [Zenodo archive](https://doi.org/10.5281/zenodo.14762347) (`article_data.zip`), associated with the dataset used in the article of Tabigecy:
+You can test it on a little example with the different files present in the `test` folder (which takes few minutes to run):
+
+`nextflow run ArnaudBelcour/tabigecy --infile test_taxonomic_affiliations.tsv --inAbundfile test_abundance_file.tsv --precomputedDB esmecata_test_database.zip --outputFolder output_test`
+
+Furthermore, you can find two other example (from the article associated with tabigecy) in the [Zenodo archive](https://doi.org/10.5281/zenodo.14762347) (`article_data.zip`), associated with the dataset used in the article of Tabigecy:
 - Bordenave et al. dataset: `bordenave_et_al_2013.tsv` (EsMeCaTa input file, for argument `--infile`) and `bordenave_et_al_2013_abundance.csv` (abundance file for argument `--inAbundfile`).
 - Schwab et al. dataset: `schwab_et_al_2022.tsv` (EsMeCaTa input file, for argument `--infile`) and `schwab_et_al_2022_abundance.tsv` (abundance file for argument `--inAbundfile`)
 
