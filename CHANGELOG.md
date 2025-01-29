@@ -2,6 +2,8 @@
 
 # tabigecy v0.1.1 (2025-01-29)
 
+First release on GitHub.
+
 ## Add
 
 * Check for missing required argument.

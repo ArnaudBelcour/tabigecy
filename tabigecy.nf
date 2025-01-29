@@ -103,7 +103,7 @@ process visualisation{
 
     script:
     """
-    bigecyhmm_visualisation --abundance-file ${input_abundance_file_path} --esmecata ${esmecata_output_folder} --bigecyhmm ${bigecyhmm_output_folder} -o output_3_visualisation
+    bigecyhmm_visualisation esmecata --abundance-file ${input_abundance_file_path} --esmecata ${esmecata_output_folder} --bigecyhmm ${bigecyhmm_output_folder} -o output_3_visualisation
     """
 }
 
