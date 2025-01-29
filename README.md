@@ -22,7 +22,7 @@ You can print the help with the following command:
 `nextflow run ArnaudBelcour/tabigecy --help`
 
 Tabigecy workflow expects three mandatory inputs:
-- `--infile` expects a tabulated file containign input taxonomic affiliations for EsMeCaTa, looking like this:
+- `--infile` expects a tabulated file containing input taxonomic affiliations for EsMeCaTa, looking like this:
 
 | observation_name | taxonomic_affiliation                                                                                        |
 |------------------|--------------------------------------------------------------------------------------------------------------|
@@ -56,11 +56,15 @@ There are optional arguments:
 At the end, it will create an output folder containing the output folders of EsMeCaTa, the one of bigecyhmm and the visualisation output folder.
 To do this on your own file you can specify the input files with the command line:
 
-`nextflow run ArnaudBelcour/tabigecy --infile esmecata_input_file.tsv --inAbundfile abundance.tsv --precomputedDB esmecata_database.zip --outputFolder output_folder --coreBigecyhmm 5`
+```bash
+nextflow run ArnaudBelcour/tabigecy --infile esmecata_input_file.tsv --inAbundfile abundance.tsv --precomputedDB esmecata_database.zip --outputFolder output_folder --coreBigecyhmm 5
+```
 
 You can test it on a little example with the different files present in the `test` folder (which takes few minutes to run):
 
-`nextflow run ArnaudBelcour/tabigecy --infile test_taxonomic_affiliations.tsv --inAbundfile test_abundance_file.tsv --precomputedDB esmecata_test_database.zip --outputFolder output_test`
+```bash
+nextflow run ArnaudBelcour/tabigecy --infile test_taxonomic_affiliations.tsv --inAbundfile test_abundance_file.tsv --precomputedDB esmecata_test_database.zip --outputFolder output_test
+```
 
 Furthermore, you can find two other example (from the article associated with tabigecy) in the [Zenodo archive](https://doi.org/10.5281/zenodo.14762347) (`article_data.zip`), associated with the dataset used in the article of Tabigecy:
 - Bordenave et al. dataset: `bordenave_et_al_2013.tsv` (EsMeCaTa input file, for argument `--infile`) and `bordenave_et_al_2013_abundance.csv` (abundance file for argument `--inAbundfile`).

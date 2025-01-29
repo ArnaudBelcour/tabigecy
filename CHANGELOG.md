@@ -1,10 +1,16 @@
 # Changelog
 
-# tabigecy v0.1.1 (2025-01-21)
+# tabigecy v0.1.1 (2025-01-29)
 
 ## Add
 
 * Check for missing required argument.
+* Use of `bigecyhmm_visualisation esmecata`.
+* Test data.
+
+## Modify
+
+* Update readme with more information on outputs and link to other repositories.
 
 # tabigecy v0.1.0 (2025-01-15)
 
