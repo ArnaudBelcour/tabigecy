@@ -1,3 +1,5 @@
+[![](https://raw.githubusercontent.com/ArnaudBelcour/tabigecy/master/pictures/doi_tabigecy.svg)](https://doi.org/10.1101/2025.01.30.635649)
+
 # Taxon to Biogeochemical Cycle
 
 A nextflow workflow created to predict functions involving major biogeochemical cycles (carbon, sulfur, nitrogen) for taxonomic affiliations (that can be created from metabarcoding or metagenomic sequencing). It relies on [EsMeCaTa](https://github.com/AuReMe/esmecata) and [bigecyhmm](https://github.com/ArnaudBelcour/bigecyhmm).
@@ -252,4 +254,4 @@ output_3_visualisation
 
 ## Citation
 
-At this moment, cite this GitHub repository.
+Arnaud Belcour, Loris Megy, Sylvain Stephant, Caroline Michel, Sétareh Rad, Petra Bombach, Nicole Dopffel, Hidde de Jong and Delphine Ropers. Predicting coarse-grained representations of biogeochemical cycles from metabarcoding data *bioRxiv* 2025.01.30.635649; doi: https://doi.org/10.1101/2025.01.30.635649
