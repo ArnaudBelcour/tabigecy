@@ -1,4 +1,4 @@
-[![](https://raw.githubusercontent.com/ArnaudBelcour/tabigecy/master/pictures/doi_tabigecy.svg)](https://doi.org/10.1093/bioinformatics/btaf230)
+[![](pictures/doi_tabigecy.svg)](https://doi.org/10.1093/bioinformatics/btaf230)
 
 # Taxon to Biogeochemical Cycle
 
