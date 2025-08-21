@@ -97,7 +97,7 @@ You can find in file `output_folder/output_2_bigecyhmm/pathway_presence_hmms.tsv
 
 | organism               | protein                          | HMM        | evalue                  | score             | length |
 |------------------------|----------------------------------|------------|-------------------------|-------------------|--------|
-| Halomonas__taxid__2745 | tr|A0A369L3R7|A0A369L3R7_9GAMM | K18244.hmm | 1.4526174542837772e-173 | 572.0691528320312 | 383    |
+| Halomonas__taxid__2745 | tr\|A0A369L3R7\|A0A369L3R7_9GAMM | K18244.hmm | 1.4526174542837772e-173 | 572.0691528320312 | 383    |
 | ...                    | ...                              | ...        | ...                     | ...               | ...    |
 
 You can find the protein sequences by searching for the protein ID in the fasta files present in `output_folder/output_1_esmecata/1_clustering/reference_proteins_consensus_fasta/`. For example, `Halomonas__taxid__2745.faa` contains all the consensus proteins predicted by EsMeCaTa for *Halomonas*.
