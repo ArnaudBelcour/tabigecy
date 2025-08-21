@@ -1,8 +1,8 @@
 [![](pictures/doi_tabigecy.svg)](https://doi.org/10.1093/bioinformatics/btaf230)
 
-# Taxon to Biogeochemical Cycle
+# Tabigecy: linking taxon to biogeochemical cycles
 
-A nextflow workflow created to predict functions involving major biogeochemical cycles (carbon, sulfur, nitrogen) for taxonomic affiliations (that can be created from metabarcoding or metagenomic sequencing). It relies on [EsMeCaTa](https://github.com/AuReMe/esmecata) and [bigecyhmm](https://github.com/ArnaudBelcour/bigecyhmm).
+A nextflow workflow to predict functions involving major biogeochemical cycles (carbon, sulfur, nitrogen) for taxonomic affiliations (that can be generated from metabarcoding or metagenomic sequencing). It relies on [EsMeCaTa](https://github.com/AuReMe/esmecata) and [bigecyhmm](https://github.com/ArnaudBelcour/bigecyhmm).
 
 ![](pictures/workflow_bigecyhmm.svg)
 
@@ -78,6 +78,60 @@ An output folder (by default called `output_folder`) is created. It contains thr
 - `output_1_esmecata`: the output folder of the `esmecata precomputed` command. For more information, look at [EsMeCaTa readme](https://github.com/AuReMe/esmecata?tab=readme-ov-file#esmecata-outputs).
 - `output_2_bigecyhmm`: the output folder of `bigecyhmm` command. For more information, look at [bigecyhmm readme](https://github.com/ArnaudBelcour/bigecyhmm?tab=readme-ov-file#output-of-bigecyhmm).
 - `output_3_visualisation`: the output folder for the visualisation of the predictions and (if given) the addition of sample abundances. This folder is also presented [bigecyhmm readme](https://github.com/ArnaudBelcour/bigecyhmm?tab=readme-ov-file#output-of-bigecyhmm_visualisation).
+
+| observation_name | sample 1 | sample 2 | sample 3 |
+|------------------|----------|----------|----------|
+| Cluster_1        | 50       |  400     | 2300     |
+| Cluster_2        | 1000     |   56     | 488      |
+| Cluster_3        | 2000     |  597     |  20      |
+| Cluster_4        | 0        |  1200    | 600      |
+| Cluster_5        | 400      |  420     | 380      |
+| Cluster_6        | 4858     |  2478    | 1878     |
+| Cluster_7        | 1        |  24      |  75      |
+
+Function (file `pathway_presence_in_organism.tsv`):
+
+| observation_name | C-S-01:Organic carbon oxidation | C-S-02:Carbon fixation | C-S-03:Ethanol oxidation |
+|------------------|----------|----------|----------|
+| Cluster_1        | 1       |  0     | 1     |
+| Cluster_2        | 1     |   0     | 1      |
+| Cluster_3        | 1     |  1     |  0      |
+| Cluster_4        | 0        |  0    | 1      |
+| Cluster_5        | 1      |  1     | 0      |
+| Cluster_6        | 1     |  1    | 0     |
+| Cluster_7        | 1        |  1      |  0      |
+
+Sample 1:
+
+`C-S-01:Organic carbon oxidation` = 50 + 1000 + 2000 + 400 + 4858 + 1 = 8309
+
+`C-S-02:Carbon fixation` = 2000 + 400 + 4858 + 1 = 7259
+
+`C-S-03:Ethanol oxidation` = 50 + 1000 = 1050
+
+Computation of abundance (`cycle_abundance_sample_raw.tsv`):
+
+| function | sample 1 | sample 2 | sample 3 |
+|------------------|----------|----------|----------|
+| C-S-01:Organic carbon oxidation        | 8309       |  3975     | 5141     |
+| C-S-02:Carbon fixation        | 7259     |   3519     | 2353      |
+| C-S-03:Ethanol oxidation        | 1050     |  1056     |  3388      |
+
+Computation of relative abundance (`cycle_abundance_sample.tsv`)
+
+Sum abundance:
+
+sample 1 = 50 + 1000 + 2000 + 400 + 4858 + 1 = 8309
+
+sample 2 = 400 + 56 + 597 + 1200 + 420 + 2478 + 24 = 5175
+
+sample 3 = 2300 + 488 + 20 + 600 + 380 + 1878 + 75 = 5741
+
+| Function | sample 1 | sample 2 | sample 3 |
+|------------------|----------|----------|----------|
+| C-S-01:Organic carbon oxidation        | 1       |  0.77     | 0.9     |
+| C-S-02:Carbon fixation        | 0.87     |   0.68     | 0.41      |
+| C-S-03:Ethanol oxidation        | 0.13     |  0.2     |  0.59      |
 
 ## EsMeCaTa output folder
 
@@ -236,7 +290,8 @@ output_3_visualisation
 - `cycle_participation`: a folder containing one tabulated file per sample from the abundance file. For each sample, it gives the cycle abundance associated with each organism in the community.
 - `function_abundance_sample.tsv`: a tabulated file containing the ratio of abundance of each function in the different sample. Rows correspond to the functions and columns correspond to the samples. It is used to create the `heatmap_abundance_samples.png` file.
 - `heatmap_abundance_samples.png`: a heatmap showing the abundance for all the HMMs searched by bigecyhmm in the different samples.
-- `cycle_abundance_sample.tsv`: a tabulated file showing the abundance of major functions in biogeochemical cycles. Rows correspond to the major functions and columns correspond to the samples.
+- `cycle_abundance_sample_raw.tsv`: a tabulated file showing the abundance of major functions in biogeochemical cycles (it consists of the sum of abundance of organisms predicted to have the functions). Rows correspond to the major functions and columns correspond to the samples.
+- `cycle_abundance_sample.tsv`: a tabulated file showing the relative abundance of major functions in biogeochemical cycles (sum of organism abundance divided by total abudance in sample). Rows correspond to the major functions and columns correspond to the samples.
 - `polar_plot_abundance_samples.png`: a polar plot showing the abundance of major functions in the samples.
 
 `function_occurrence` is a folder containing all visualisation associated with occurrence values. It contains:
