@@ -15,7 +15,7 @@ The outputs were generated using the command: `nextflow run ../tabigecy.nf --inf
 
 ## EsMeCaTa coverage of the samples
 
-A first thing to explore Tabigecy's output is to look at how well the samples have been covered by EsMeCaTa.
+A first thing to explore Tabigecy's output is to look at how well the samples are covered by EsMeCaTa.
 Tabigecy produces several files that show which taxonomic ranks were used by EsMeCaTa to predict protein contents for the different taxa present in the samples.
 The figure located at `output_folder/output_3_visualisation/function_abundance/barplot_esmecata_found_taxon_sample.png` illustrates this information:
 
@@ -75,7 +75,7 @@ There is the same file for the more precise functions in `output_folder/output_3
 
 You can traceback how the prediction was made through Tabigecy output files.
 
-First, you need to map your organism name with the taxon ID used by EsMeCaTa. You cna find this mapping in the file `output_folder/output_1_esmecata/0_proteomes/proteome_tax_id.tsv`. The column `observation_name` corresponds to your organism name (`observation_name` of your input file) and EsMeCaTa taxon ID is in column `tax_id_name`:
+First, you need to map your organism name with the taxon ID used by EsMeCaTa. You can find this mapping in the file `output_folder/output_1_esmecata/0_proteomes/proteome_tax_id.tsv`. The column `observation_name` corresponds to your organism name (`observation_name` of your input file) and EsMeCaTa taxon ID is in column `tax_id_name`:
 
 | observation_name  |name| tax_id |tax_id_name|...|
 |------------------|---------------------|------------------|---------------------|--------------------|
@@ -86,7 +86,7 @@ First, you need to map your organism name with the taxon ID used by EsMeCaTa. Yo
 
 You can find in file `output_folder/output_2_bigecyhmm/pathway_presence_hmms.tsv` the predicted HMMs associated with major functions for the taxon selected by EsMeCaTa. And you can have the HMM results in folder `output_folder/output_2_bigecyhmm/hmm_results` by seaching for the file associated with EsMeCaTa taxon (`Halomonas__taxid__2745.tsv` for Halomonas). In this file, you have a column indicating the reference HMM and the column `protein` showing the protein ID that is matching.
 
-You cna find the protein sequences by searchin for the protein ID in the files present in `output_folder/output_1_esmecata/1_clustering/reference_proteins_consensus_fasta/`. For example, `Halomonas__taxid__2745.faa` contains all the consesnsus proteins predicted by EsMeCaTa for *Halomonas*.
+You can find the protein sequences by searching for the protein ID in the files present in `output_folder/output_1_esmecata/1_clustering/reference_proteins_consensus_fasta/`. For example, `Halomonas__taxid__2745.faa` contains all the consensus proteins predicted by EsMeCaTa for *Halomonas*.
 
 In the folder `output_folder/output_1_esmecata/1_clustering/computed_threshold/`, you can see, for each taxon, how well conserved the protein is in the different proteomes that were used for the predictions. 
 
