@@ -71,7 +71,15 @@ For major functions of bigoeochemical cycle, their presence in the input organis
 | Methermicoccus        | 1            | 1        | ...            |
 | ...        | ...       | ...        | ...       |
 
-There is the same file for the more precise functions in `output_folder/output_3_visualisation/function_occurrence/function_occurrence_in_organism.tsv`.
+There is the same file for the more precise functions in `output_folder/output_3_visualisation/function_occurrence/function_occurrence_in_organism.tsv`. Occurrence of functions are shown in files of `output_folder/output_3_visualisation/function_occurrence`.
+
+There are cycle diagrams showing the occurrence of the functions in all the communities:
+
+![](pictures/3_diagram_carbon_cycle.png)
+
+*Genomes* corresponds to the number of taxa from EsMeCaTa predicted to have the functions and *Coverage* corresponds to the percentage of these taxa among all the communities.
+
+
 
 You can traceback how predictions were made through Tabigecy output files.
 
@@ -124,7 +132,7 @@ In the folder `output_folder/output_1_esmecata/1_clustering/computed_threshold/`
 | A0A369L3R7             | 1.0           | UP000235346,UP000004512,UP000327197,... |
 | ...                    | ...           | ...  |
 
-This shows that protein cluster A0A369L3R7 was made from protein present in all proteomes of *Halomonas*.
+This shows that protein cluster A0A369L3R7 was generated from proteins present in all proteomes of *Halomonas*.
 
 ## Function abundance computation
 
@@ -160,13 +168,13 @@ The relative abundance for each function and sample can be found in the file `ou
 
 These different values can be seen in the diagram figures located at `output_folder/output_3_visualisation/function_abundance/cycle_diagrams_abundance/*_cycle_*.png`:
 
-![](pictures/3_S1_carbon_cycle.png)
+![](pictures/4_S1_carbon_cycle.png)
 
 *Abundance* corresponds to the absolute abundance associated with organisms linked to the functions. *Percentage* corresponds to the relative abundance multiplied by 100.
 
 The relative abundance is also shown in the polar plot `output_folder/output_3_visualisation/function_abundance/polar_plot_abundance_samples.png`:
 
-![](pictures/4_polar_plot_abundance_samples.png)
+![](pictures/5_polar_plot_abundance_samples.png)
 
 Relative abundance goes from 0 to 1 and each function is set on the angular axis.
 
