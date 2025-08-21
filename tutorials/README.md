@@ -21,7 +21,7 @@ The figure located at `output_folder/output_3_visualisation/function_abundance/b
 
 ![](pictures/1_barplot_esmecata_found_taxon_sample.png)
 
-On the abscissa, each bar corresponds to a sample. The value of the ordinate corresponds to the relative abundance of the organisms present in each sample. The color indicates which taxonomic rank has been used by EsMeCaTa to predict the protein content. Here, in red the genus level and in green the family level. In this exmaple, the four first samples were predicted mostly at the genus and family levels, except for sample 5. This sample 5 contains half of its community associated with grey color (indicating that EsMeCaTa was not able to make prediction for the associated organisms).
+On the abscissa, each bar corresponds to a sample. The value of the ordinate corresponds to the relative abundance of the organisms present in each sample. The color indicates which taxonomic rank has been used by EsMeCaTa to predict the protein content. Here, in red the genus level and in green the family level. In this example, the four first samples were predicted mostly at the genus and family levels, except for sample 5. Sample 5 has half of its community associated with grey color (indicating that EsMeCaTa was not able to make prediction for the associated organisms).
 
 For the missing predictions, more information can be found in the file `output_folder/output_3_visualisation/function_abundance/barplot_esmecata_missing_organism_sample.tsv`:
 
@@ -62,7 +62,7 @@ Now, half the abundance of sample 5 is associated with phylum `Candidatus Parcub
 
 The predicted functions for the community are present in folder `output_folder/output_2_bigecyhmm` and `output_folder/output_3_visualisation/function_occurrence`.
 
-For main functions, their presence in the input organisms are listed in `output_folder/output_3_visualisation/function_occurrence/pathway_presence_in_organism.tsv`:
+For major functions of bigoeochemical cycle, their presence in the input organisms are listed in `output_folder/output_3_visualisation/function_occurrence/pathway_presence_in_organism.tsv`:
 
 | function  |C-S-01:Organic carbon oxidation| C-S-02:Carbon fixation |...|
 |------------------|---------------------|------------------|---------------------|
@@ -73,9 +73,9 @@ For main functions, their presence in the input organisms are listed in `output_
 
 There is the same file for the more precise functions in `output_folder/output_3_visualisation/function_occurrence/function_occurrence_in_organism.tsv`.
 
-You can traceback how the prediction was made through Tabigecy output files.
+You can traceback how predictions were made through Tabigecy output files.
 
-First, you need to map your organism name with the taxon ID used by EsMeCaTa. You can find this mapping in the file `output_folder/output_1_esmecata/0_proteomes/proteome_tax_id.tsv`. The column `observation_name` corresponds to your organism name (`observation_name` of your input file) and EsMeCaTa taxon ID is in column `tax_id_name`:
+First, you need to map your organism name with the taxon used by EsMeCaTa. You can find this mapping in the file `output_folder/output_1_esmecata/0_proteomes/proteome_tax_id.tsv`. The column `observation_name` corresponds to your organism name (`observation_name` of your input file) and EsMeCaTa taxon is in column `tax_id_name`:
 
 | observation_name  |name| tax_id |tax_id_name|...|
 |------------------|---------------------|------------------|---------------------|--------------------|
@@ -86,7 +86,7 @@ First, you need to map your organism name with the taxon ID used by EsMeCaTa. Yo
 
 You can find in file `output_folder/output_2_bigecyhmm/pathway_presence_hmms.tsv` the predicted HMMs associated with major functions for the taxon selected by EsMeCaTa. And you can have the HMM results in folder `output_folder/output_2_bigecyhmm/hmm_results` by seaching for the file associated with EsMeCaTa taxon (`Halomonas__taxid__2745.tsv` for Halomonas). In this file, you have a column indicating the reference HMM and the column `protein` showing the protein ID that is matching.
 
-You can find the protein sequences by searching for the protein ID in the files present in `output_folder/output_1_esmecata/1_clustering/reference_proteins_consensus_fasta/`. For example, `Halomonas__taxid__2745.faa` contains all the consensus proteins predicted by EsMeCaTa for *Halomonas*.
+You can find the protein sequences by searching for the protein ID in the fasta files present in `output_folder/output_1_esmecata/1_clustering/reference_proteins_consensus_fasta/`. For example, `Halomonas__taxid__2745.faa` contains all the consensus proteins predicted by EsMeCaTa for *Halomonas*.
 
 In the folder `output_folder/output_1_esmecata/1_clustering/computed_threshold/`, you can see, for each taxon, how well conserved the protein is in the different proteomes that were used for the predictions. 
 
