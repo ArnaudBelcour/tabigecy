@@ -86,9 +86,45 @@ First, you need to map your organism name with the taxon used by EsMeCaTa. You c
 
 You can find in file `output_folder/output_2_bigecyhmm/pathway_presence_hmms.tsv` the predicted HMMs associated with major functions for the taxon selected by EsMeCaTa. And you can have the HMM results in folder `output_folder/output_2_bigecyhmm/hmm_results` by seaching for the file associated with EsMeCaTa taxon (`Halomonas__taxid__2745.tsv` for Halomonas). In this file, you have a column indicating the reference HMM and the column `protein` showing the protein ID that is matching.
 
+**pathway_presence_hmms.tsv**:
+
+| pathway  |Halomonas__taxid__2745| ...|
+|------------------|---------------------|--------------------|
+| C-S-01:Organic carbon oxidation        | K18244.hmm, TIGR00016.hmm, TIGR02717.hmm, TIGR00651.hmm, K00001.hmm, K00840.hmm, TIGR02188.hmm, K03186.hmm, TIGR02821.hmm, K01779.hmm, K00813.hmm, K00123.hmm, K00817.hmm, K22515.hmm, K03381.hmm, K11410.hmm, K02619.hmm, K06445.hmm, K00249.hmm, K00821.hmm, K09456.hmm, K00826.hmm, K09478.hmm, PF02406.hmm, K00255.hmm, K01207.hmm, K06446.hmm, K00831.hmm, K03342.hmm, K00832.hmm, K15980.hmm, K05343.hmm       | ...       |
+| ...        | ...       |...       |
+
+**output_folder/output_2_bigecyhmm/hmm_results/Halomonas__taxid__2745.tsv**:
+
+| organism               | protein                          | HMM        | evalue                  | score             | length |
+|------------------------|----------------------------------|------------|-------------------------|-------------------|--------|
+| Halomonas__taxid__2745 | tr|A0A369L3R7|A0A369L3R7_9GAMM | K18244.hmm | 1.4526174542837772e-173 | 572.0691528320312 | 383    |
+| ...                    | ...                              | ...        | ...                     | ...               | ...    |
+
 You can find the protein sequences by searching for the protein ID in the fasta files present in `output_folder/output_1_esmecata/1_clustering/reference_proteins_consensus_fasta/`. For example, `Halomonas__taxid__2745.faa` contains all the consensus proteins predicted by EsMeCaTa for *Halomonas*.
 
-In the folder `output_folder/output_1_esmecata/1_clustering/computed_threshold/`, you can see, for each taxon, how well conserved the protein is in the different proteomes that were used for the predictions. 
+**Halomonas__taxid__2745.faa**:
+
+```
+>tr|A0A369L3R7|A0A369L3R7_9GAMM Acyl-CoA dehydrogenase OS=Halomonas sp. DQ26W OX=2282311 GN=DU490_10250 PE=3 SV=1
+MIRDPELLDQLRDAAHRFAQEELAPHAAEWDEEGHFPREVIREAGEAGFLGIYIPEEYGG
+LGLSRLDASLIAEEISRGCSGYTSALTIHNNLVTWMIAHFGTPEQKQRWLPKLASGEWLG
+AFALTEPGAGSDAASMKTRAVRDGDGYVLNGSKMWITNGPIADVLVVMARTDPPDSGAGG
+ISAFLVPADTPGISYGKIEDKMGWRASPTREISFDDVRVPAENRLGGEEGQGFKYAMKGL
+DRGRLGIAACSLGAAQAALDLARDYMLERKQFGRPLAAFQLIQFKLADMQTELDAARLMV
+YQAAWRLDQGQPASTEAAMAKRFATEKAFDVADEALQLHGGYGYIREYPVERLYRDARVH
+RIYEGTSEIMKLIIARRLLAEVS
+```
+
+In the folder `output_folder/output_1_esmecata/1_clustering/computed_threshold/`, you can see, for each taxon, how well conserved the protein is in the different proteomes that were used for the predictions.
+
+**output_folder/output_1_esmecata/1_clustering/computed_threshold/Halomonas__taxid__2745.tsv**:
+
+| representative_protein | cluster_ratio | proteomes |
+|------------------------|---------------|--------------------------------------------|
+| A0A369L3R7             | 1.0           | UP000235346,UP000004512,UP000327197,... |
+| ...                    | ...           | ...  |
+
+This shows that protein cluster A0A369L3R7 was made from protein present in all proteomes of *Halomonas*.
 
 ## Function abundance computation
 
