@@ -6,7 +6,6 @@ params.infile = false
 params.precomputedDB = false
 params.outputFolder = false
 params.inAbundfile = false
-
 params.coreBigecyhmm = 1
 
 // Help message
@@ -14,7 +13,7 @@ if (params.help) {
     help = """tabigecy.nf version ${params.manifest.version}: ${params.manifest.description}
              |Required arguments:
              |  --infile  Location of the input file. [default: ${params.infile}]
-             |  --precomputedDB  Location of esmecata precomputed database. [default: ${params.precomputedDB}]
+             |  --precomputedDB  Location of esmecata precomputed database (multiple path can be given separated by a space and enclosed by ", for example "path/database_1 path/database_2"). [default: ${params.precomputedDB}]
              |  --outputFolder  Location of the output folder. [default: ${params.outputFolder}]
              |
              |Optional arguments:
@@ -40,7 +39,10 @@ else{
 }
 
 if (params.precomputedDB) {
-    precomputedDB_path = Channel.fromPath(params.precomputedDB)
+    // Split database paths if there are several and collect them.
+    database_paths = params.precomputedDB.split(' ').collect()
+    // Create channel for each path and collect them.
+    precomputedDB_path = Channel.fromPath(database_paths).collect()
 }
 else{
     println("Missing --precomputedDB argument. Add the path to esmecata precomputed database. You can see the help with --help for more information.")
@@ -54,7 +56,6 @@ else{
     println("Missing --outputFolder argument. Add the path to the output folder. You can see the help with --help for more information.")
     exit(0)
 }
-
 
 // Run esmecata on the input file using the precomputed database.
 process esmecata {
