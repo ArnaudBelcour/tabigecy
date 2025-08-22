@@ -5,6 +5,7 @@
 ## Add
 
 * The possibility to use several precomputed database (requires esmecata version 0.6.6).
+* Tutorial explaining Tabigecy outputs.
 
 ## Modify
 

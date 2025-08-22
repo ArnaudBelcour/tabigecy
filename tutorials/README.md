@@ -166,6 +166,66 @@ where:
 
 The relative abundance for each function and sample can be found in the file `output_folder/output_3_visualisation/function_abundance/cycle_abundance_sample.tsv`.
 
+**Example**:
+
+Input abundance file:
+
+| observation_name | sample 1 | sample 2 | sample 3 |
+|------------------|----------|----------|----------|
+| Cluster_1        | 50       |  400     | 2300     |
+| Cluster_2        | 1000     |   56     | 488      |
+| Cluster_3        | 2000     |  597     |  20      |
+| Cluster_4        | 0        |  1200    | 600      |
+| Cluster_5        | 400      |  420     | 380      |
+| Cluster_6        | 4858     |  2478    | 1878     |
+| Cluster_7        | 1        |  24      |  75      |
+
+Function (file `pathway_presence_in_organism.tsv`):
+
+| observation_name | C-S-01:Organic carbon oxidation | C-S-02:Carbon fixation | C-S-03:Ethanol oxidation |
+|------------------|----------|----------|----------|
+| Cluster_1        | 1       |  0     | 1     |
+| Cluster_2        | 1     |   0     | 1      |
+| Cluster_3        | 1     |  1     |  0      |
+| Cluster_4        | 0        |  0    | 1      |
+| Cluster_5        | 1      |  1     | 0      |
+| Cluster_6        | 1     |  1    | 0     |
+| Cluster_7        | 1        |  1      |  0      |
+
+Computation of abundance (`cycle_abundance_sample_raw.tsv`):
+
+```
+Function absolute abudnance in sample 1:
+`C-S-01:Organic carbon oxidation` = 50 + 1000 + 2000 + 400 + 4858 + 1 = 8309
+
+`C-S-02:Carbon fixation` = 2000 + 400 + 4858 + 1 = 7259
+
+`C-S-03:Ethanol oxidation` = 50 + 1000 = 1050
+```
+| function | sample 1 | sample 2 | sample 3 |
+|------------------|----------|----------|----------|
+| C-S-01:Organic carbon oxidation        | 8309       |  3975     | 5141     |
+| C-S-02:Carbon fixation        | 7259     |   3519     | 2353      |
+| C-S-03:Ethanol oxidation        | 1050     |  1056     |  3388      |
+
+Computation of relative abundance (`cycle_abundance_sample.tsv`)
+
+```
+Sum abundance:
+
+sample 1 = 50 + 1000 + 2000 + 400 + 4858 + 1 = 8309
+
+sample 2 = 400 + 56 + 597 + 1200 + 420 + 2478 + 24 = 5175
+
+sample 3 = 2300 + 488 + 20 + 600 + 380 + 1878 + 75 = 5741
+```
+| Function | sample 1 | sample 2 | sample 3 |
+|------------------|----------|----------|----------|
+| C-S-01:Organic carbon oxidation        | 1       |  0.77     | 0.9     |
+| C-S-02:Carbon fixation        | 0.87     |   0.68     | 0.41      |
+| C-S-03:Ethanol oxidation        | 0.13     |  0.2     |  0.59      |
+
+
 These different values can be seen in the diagram figures located at `output_folder/output_3_visualisation/function_abundance/cycle_diagrams_abundance/*_cycle_*.png`:
 
 ![](pictures/4_S1_carbon_cycle.png)
@@ -177,4 +237,3 @@ The relative abundance is also shown in the polar plot `output_folder/output_3_v
 ![](pictures/5_polar_plot_abundance_samples.png)
 
 Relative abundance goes from 0 to 1 and each function is set on the angular axis.
-
