@@ -11,7 +11,13 @@ For this tutorial, semi-artificial data are used:
 - `tutorial_example_abundance.csv`: abundance associated with the taxonomic affiliations for 5 samples.
 - `esmecata_database.zip`: esmecata precomputed database can be downloaded from this [Zenodo archive](https://doi.org/10.5281/zenodo.13354073).
 
-The outputs were generated using the command: `nextflow run ../tabigecy.nf --infile input/tutorial_example_affiliations.tsv --inAbundfile input/tutorial_example_abundance.csv --precomputedDB ../esmecata_database.zip --outputFolder output_folder --coreBigecyhmm 35`
+This tutorial was made using EsMeCaTa version 0.6.6, bigecyhmm version 0.1.8 and tabigecy version 0.1.2.
+
+The outputs were generated using these two commands:
+
+- `nextflow run ../tabigecy.nf --infile input/tutorial_example_affiliations.tsv --inAbundfile input/tutorial_example_abundance.csv --precomputedDB ../esmecata_database.zip --outputFolder output_folder --coreBigecyhmm 35`
+
+- `nextflow run ../tabigecy.nf --infile input/tutorial_example_affiliations.tsv --inAbundfile input/tutorial_example_abundance.csv --precomputedDB "../esmecata_database.zip ../esmecata_database_phyla.zip" --outputFolder output_folder_2 --coreBigecyhmm 35`
 
 ## EsMeCaTa coverage of the samples
 
@@ -232,8 +238,20 @@ These different values can be seen in the diagram figures located at `output_fol
 
 *Abundance* corresponds to the absolute abundance associated with organisms linked to the functions. *Percentage* corresponds to the relative abundance multiplied by 100.
 
-The relative abundance is also shown in the polar plot `output_folder/output_3_visualisation/function_abundance/polar_plot_abundance_samples.png`:
-
-![](pictures/5_polar_plot_abundance_samples.png)
-
+The relative abundance is also shown in the polar plot `output_folder/output_3_visualisation/function_abundance/polar_plot_abundance_sample_XXX.png`:
 Relative abundance goes from 0 to 1 and each function is set on the angular axis.
+
+Sample 1:
+![](pictures/5_polar_plot_abundance_sample_S1.png)
+
+Sample 2:
+![](pictures/5_polar_plot_abundance_sample_S2.png)
+
+Sample 3:
+![](pictures/5_polar_plot_abundance_sample_S3.png)
+
+Sample 4:
+![](pictures/5_polar_plot_abundance_sample_S4.png)
+
+Sample 5:
+![](pictures/5_polar_plot_abundance_sample_S5.png)
