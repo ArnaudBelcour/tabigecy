@@ -1,7 +1,6 @@
 # Tabigecy tutorial
 
-An explanation of several outputs of Tabigecy and how they can be used.
-I also try to explain some issues that can be encountered when using Tabigecy.
+An explanation of several outputs of Tabigecy and how they can be used. The tutorial also tries to explain some issues that can be encountered when using Tabigecy.
 
 ## Input
 
@@ -10,6 +9,7 @@ For this tutorial, semi-artificial data are used:
 - `tutorial_example_affiliations.tsv`: input taxonomic affiliations.
 - `tutorial_example_abundance.csv`: abundance associated with the taxonomic affiliations for 5 samples.
 - `esmecata_database.zip`: esmecata precomputed database can be downloaded from this [Zenodo archive](https://doi.org/10.5281/zenodo.13354073).
+- `esmecata_database_phyla.zip`: a secondary esmecata precomputed database made for phyla with fewer sequenced genomes. It can also be downloaded from another Zenodo archive.
 
 This tutorial was made using EsMeCaTa version 0.6.6, bigecyhmm version 0.1.8 and tabigecy version 0.1.2.
 
