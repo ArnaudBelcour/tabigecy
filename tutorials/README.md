@@ -83,9 +83,7 @@ There are cycle diagrams showing the occurrence of the functions in all the comm
 
 ![](pictures/3_diagram_carbon_cycle.png)
 
-*Genomes* corresponds to the number of taxa from EsMeCaTa predicted to have the functions and *Coverage* corresponds to the percentage of these taxa among all the communities.
-
-
+*Occurence* corresponds to the number of taxa from EsMeCaTa predicted to have the functions and *Percentage* corresponds to the percentage of these taxa among all the communities. If an abundance file is given as input, the percentage is computed according to all organisms present (as row) in the abundance file. Otherwise, the percentage is computed according to the number of organisms processed by bigecyhmm (or EsMeCaTa if an esmecata output folder was given as input).
 
 You can traceback how predictions were made through Tabigecy output files.
 
@@ -232,7 +230,7 @@ sample 3 = 2300 + 488 + 20 + 600 + 380 + 1878 + 75 = 5741
 | C-S-03:Ethanol oxidation        | 0.13     |  0.2     |  0.59      |
 
 
-These different values can be seen in the diagram figures located at `output_folder/output_3_visualisation/function_abundance/cycle_diagrams_abundance/*_cycle_*.png`:
+These different values can be seen in the diagram figures located at `output_folder/output_3_visualisation/function_abundance/cycle_diagrams_abundance/*_cycle_*.png`, for example with *Sample 1*:
 
 ![](pictures/4_S1_carbon_cycle.png)
 
