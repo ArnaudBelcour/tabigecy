@@ -1,5 +1,17 @@
 # Changelog
 
+# tabigecy v0.1.2 (2025-09-30)
+
+## Add
+
+* The possibility to use several precomputed database (requires esmecata version 0.6.6).
+* Tutorial explaining Tabigecy outputs.
+
+## Modify
+
+* Update readme to add more information.
+* Update article reference.
+
 # tabigecy v0.1.1 (2025-01-29)
 
 First release on GitHub.
