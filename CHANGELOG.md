@@ -1,6 +1,6 @@
 # Changelog
 
-# tabigecy v0.1.2 (2025-08-21)
+# tabigecy v0.1.2 (2025-09-30)
 
 ## Add
 
