@@ -9,7 +9,7 @@ A nextflow workflow to predict functions involving major biogeochemical cycles (
 ## Requirements
 
 - [Nextflow](https://www.nextflow.io/docs/latest/install.html): to run the workflow.
-- [esmecata](https://github.com/AuReMe/esmecata), [bigecyhmm](https://github.com/ArnaudBelcour/bigecyhmm) and several python packages for visualisation: they can be installed with the following pip command: `pip install esmecata bigecyhmm seaborn pandas plotly kaleido`.
+- [esmecata](https://github.com/AuReMe/esmecata), [bigecyhmm](https://github.com/ArnaudBelcour/bigecyhmm) and several python packages for visualisation: they can be installed with the following pip command: `pip install esmecata bigecyhmm seaborn pandas`.
 - esmecata precomputed database: it can be downloaded from this [Zenodo archive](https://doi.org/10.5281/zenodo.13354073). This precomputed database size is 4 Gb.
 
 ## Usage
@@ -36,7 +36,7 @@ Tabigecy workflow expects three mandatory inputs:
 | Cluster_6        | Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Dysgonomonadaceae;unknown genus;unknown species             |
 | Cluster_7        | Bacteria;Firmicutes;Clostridia;Clostridiales;Clostridiaceae;Clostridium;unknown species                      |
 
-- `--precomputedDB` expects the zip file containing EsMeCaTa precomputed database, [available here](https://doi.org/10.5281/zenodo.13354073).
+- `--precomputedDB` expects the zip file containing EsMeCaTa precomputed database, [available here](https://doi.org/10.5281/zenodo.13354073). It is possible to give multiple precomputed databases, separated by a space such as `--precomputedDB "esmecata_database1.zip esmecata_database2.zip"`. EsMeCaTa will first use *esmecata_database1.zip* and for taoxnomic affiliations not found in this database, it will search in *esmecata_database2.zip*.
 - `--outputFolder` expects a path where the output will be generated.
 
 There are optional arguments:
@@ -79,7 +79,7 @@ An output folder (by default called `output_folder`) is created. It contains thr
 - `output_2_bigecyhmm`: the output folder of `bigecyhmm` command. For more information, look at [bigecyhmm readme](https://github.com/ArnaudBelcour/bigecyhmm?tab=readme-ov-file#output-of-bigecyhmm).
 - `output_3_visualisation`: the output folder for the visualisation of the predictions and (if given) the addition of sample abundances. This folder is also presented [bigecyhmm readme](https://github.com/ArnaudBelcour/bigecyhmm?tab=readme-ov-file#output-of-bigecyhmm_visualisation).
 
-There is tutorial explaining several of the outputs from Tabigecy: [tabigecy output](https://github.com/ArnaudBelcour/tabigecy/blob/tabigecy_0.1.2/tutorials/README.md).
+There is tutorial explaining several of the outputs from Tabigecy: [tabigecy output](https://github.com/ArnaudBelcour/tabigecy/blob/main/tutorials/README.md).
 
 ## EsMeCaTa output folder
 
