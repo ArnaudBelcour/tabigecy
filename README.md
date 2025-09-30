@@ -79,7 +79,7 @@ An output folder (by default called `output_folder`) is created. It contains thr
 - `output_2_bigecyhmm`: the output folder of `bigecyhmm` command. For more information, look at [bigecyhmm readme](https://github.com/ArnaudBelcour/bigecyhmm?tab=readme-ov-file#output-of-bigecyhmm).
 - `output_3_visualisation`: the output folder for the visualisation of the predictions and (if given) the addition of sample abundances. This folder is also presented [bigecyhmm readme](https://github.com/ArnaudBelcour/bigecyhmm?tab=readme-ov-file#output-of-bigecyhmm_visualisation).
 
-There is tutorial explaining several of the outputs from Tabigecy: [tabigecy output](https://github.com/ArnaudBelcour/tabigecy/blob/main/tutorials/README.md).
+There is a tutorial explaining several of the outputs from Tabigecy: [tabigecy output](https://github.com/ArnaudBelcour/tabigecy/tree/main/tutorials).
 
 ## EsMeCaTa output folder
 
@@ -215,6 +215,7 @@ output_3_visualisation
 │   |   └── sample_1.tsv
 │   |   └── ...
 │   └── cycle_abundance_sample.tsv
+│   └── cycle_abundance_sample_raw.tsv
 │   └── function_abundance_sample.tsv
 │   └── heatmap_abundance_samples.png
 │   └── polar_plot_abundance_sample_1.png
@@ -233,19 +234,19 @@ output_3_visualisation
 
 `function_abundance` is a folder containing all visualisation associated with abundance values. It contains:
 
-- `cycle_diagrams_abundance`: a folder containing 4 cycle diagrams (carbon, sulfur, nitrogen and other) from METABOLIC per sample from the abundance file. For each sample, it gives the abundance and the relative abundance of the major function.
+- `cycle_diagrams_abundance`: a folder containing 4 cycle diagrams (carbon, sulfur, nitrogen and other) from METABOLIC per sample from the abundance file. For each sample, it gives the abundance and the relative abundance (in percentage) of the major function.
 - `function_participation`: a folder containing one tabulated file per sample from the abundance file. For each sample, it gives the function abundance associated with each organism in the community.
 - `cycle_participation`: a folder containing one tabulated file per sample from the abundance file. For each sample, it gives the cycle abundance associated with each organism in the community.
 - `function_abundance_sample.tsv`: a tabulated file containing the ratio of abundance of each function in the different sample. Rows correspond to the functions and columns correspond to the samples. It is used to create the `heatmap_abundance_samples.png` file.
 - `heatmap_abundance_samples.png`: a heatmap showing the abundance for all the HMMs searched by bigecyhmm in the different samples.
-- `cycle_abundance_sample_raw.tsv`: a tabulated file showing the abundance of major functions in biogeochemical cycles (it consists of the sum of abundance of organisms predicted to have the functions). Rows correspond to the major functions and columns correspond to the samples.
+- `cycle_abundance_sample_raw.tsv`: a tabulated file showing the abundance of major functions in biogeochemical cycles (it consists of the sum of abundance of organisms predicted to have the functions). Rows correspond to the major functions and columns correspond to the samples. Compared to `cycle_abundance_sample.tsv`, it shows the absolute abundance (without weightening by total abundance in the sample).
 - `cycle_abundance_sample.tsv`: a tabulated file showing the relative abundance of major functions in biogeochemical cycles (sum of organism abundance divided by total abudance in sample). Rows correspond to the major functions and columns correspond to the samples.
 - `polar_plot_abundance_samples_XXXX.png`: a polar plot showing the abundance of major functions in the sample `XXXX`.
 
 `function_occurrence` is a folder containing all visualisation associated with occurrence values. It contains:
 
 - `cycle_occurence.tsv`: a tabulated file showing the occurrence of major functions in biogeochemical cycles. Rows correspond to the major function and the column corresponds to the community.
-- `diagram_*.png`: diagram representing a biogeochemical cycles (carbon, nitrogen, sulfur, other) from METABOLIC. It shows the number of organisms with predicted major functions and the relative occurrence of these functions.
+- `diagram_*.png`: diagram representing a biogeochemical cycles (carbon, nitrogen, sulfur, other) from METABOLIC. It shows the number of organisms with predicted major functions (*Occurrence*) and the relative occurrence (*Percentage*) of these functions.
 - `function_occurrence.tsv`: a tabulated file containing the ratio for each function. Rows correspond to the function and the column corresponds to the community. It is used to create the `heatmap_occurrence.png` file.
 - `heatmap_occurrence.png`: a heatmap showing the occurrence for all the HMMs searched by bigecyhmm in the community (all the input protein files).
 - `swarmplot_function_ratio_community.png`: a swarmplot showing the occurrence of major functions in the samples.
