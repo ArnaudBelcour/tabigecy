@@ -274,3 +274,7 @@ Arnaud Belcour, Loris Megy, Sylvain Stephant, Caroline Michel, Sétareh Rad, Pet
 For EsMeCaTa:
 
 Arnaud Belcour, Pauline Hamon-Giraud, Alice Mataigne, Baptiste Ruiz, Yann Le Cunff, Jeanne Got, Lorraine Awhangbo, Mégane Lebreton, Clémence Frioux, Simon Dittami, Patrick Dabert, Anne Siegel, Samuel Blanquart. Estimating consensus proteomes and metabolic functions from taxonomic affiliations. *bioRxiv* 2022.03.16.484574; doi: https://doi.org/10.1101/2022.03.16.484574
+
+## License
+
+This software is licensed under the GNU GPL-3.0-or-later, see the [LICENSE](https://github.com/ArnaudBelcour/tabigecy/blob/main/LICENSE) file for details.
