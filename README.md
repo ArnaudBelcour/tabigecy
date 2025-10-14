@@ -68,7 +68,7 @@ You can test it on a little example with the different files present in the `tes
 nextflow run ArnaudBelcour/tabigecy --infile test_taxonomic_affiliations.tsv --inAbundfile test_abundance_file.tsv --precomputedDB esmecata_test_database.zip --outputFolder output_test
 ```
 
-Furthermore, you can find two other example (from the article associated with tabigecy) in the [Zenodo archive](https://doi.org/10.5281/zenodo.14762347) (`article_data.zip`), associated with the dataset used in the article of Tabigecy:
+Furthermore, you can find two other examples (from the article associated with tabigecy) in the [Zenodo archive](https://doi.org/10.5281/zenodo.14762347) (`article_data.zip`), associated with the dataset used in the article of Tabigecy:
 - Bordenave et al. dataset: `bordenave_et_al_2013.tsv` (EsMeCaTa input file, for argument `--infile`) and `bordenave_et_al_2013_abundance.csv` (abundance file for argument `--inAbundfile`).
 - Schwab et al. dataset: `schwab_et_al_2022.tsv` (EsMeCaTa input file, for argument `--infile`) and `schwab_et_al_2022_abundance.tsv` (abundance file for argument `--inAbundfile`)
 
@@ -125,7 +125,7 @@ output_1_esmecata
 
 `proteome_tax_id.tsv` contains the name, the taxon_id and the proteomes associated with each `observation_name`.
 
-`esmecata_metadata_proteomes.json` is a log about the Uniprot release used and how the queries ware made (REST or SPARQL). It also gets the metadata associated with the command used with esmecata and the dependencies.
+`esmecata_metadata_proteomes.json` is a log about the UniProt release used and how the queries ware made (REST or SPARQL). It also gets the metadata associated with the command used with esmecata and the dependencies.
 
 `stat_number_proteome.tsv` is a tabulated file containing the number of proteomes found for each observation name.
 
@@ -133,13 +133,13 @@ output_1_esmecata
 
 ### EsMeCaTa output clustering subfolder
 
-The `computed_threshold` folder contains the ratio of proteomes represented in a cluster compared to the total number of proteomes associated with a taxon. If the ratio is equal to 1, it means that all the proteomes are represented by a protein in the cluster, 0.5 means that half of the proteoems are represented in the cluster. This score is used when giving the `-t` argument.
+The `computed_threshold` folder contains the ratio of proteomes represented in a cluster compared to the total number of proteomes associated with a taxon. If the ratio is equal to 1, it means that all the proteomes are represented by a protein in the cluster, 0.5 means that half of the proteomes are represented in the cluster. This score is used when giving the `-t` argument.
 
 The `reference_proteins_consensus_fasta` contains the consensus proteins associated with a taxon name for the cluster kept after clustering process.
 
 The `proteome_tax_id.tsv` file is the same than the one created in `esmecata proteomes`.
 
-`esmecata_metadata_clustering.json` is a log about the the metadata associated with the command used with esmecata and the dependencies.
+`esmecata_metadata_clustering.json` is a log about the the metadata associated with the command used with EsMeCaTa and the dependencies.
 
 `stat_number_clustering.tsv` is a tabulated file containing the number of shared proteins found for each observation name.
 
@@ -151,7 +151,7 @@ The `pathologic` folder contains one sub-folder for each `observation_name` in w
 
 The file `function_table.tsv` contains the EC numbers and GO Terms present in each observation name.
 
-The `esmecata_metadata_annotation.json` serves the same purpose as the one used in `esmecata proteomes` to retrieve metadata about Uniprot release at the time of the query. It also gets the metadata associated with the command used with esmecata and the dependencies.
+The `esmecata_metadata_annotation.json` serves the same purpose as the one used in `esmecata proteomes` to retrieve metadata about UniProt release at the time of the query. It also gets the metadata associated with the command used with esmecata and the dependencies.
 
 `stat_number_annotation.tsv` is a tabulated file containing the number of GO Terms and EC numbers found for each observation name.
 
@@ -198,7 +198,7 @@ bigecyhmm output `hmm_results` subfolder: One tsv file for each taxon considered
 `Total.R_input.txt`: ratio of the occurrence of major metabolic pathways in the all communities.
 
 
-## Visualisaiton output folder
+## Visualisation output folder
 
 It contains several figures and their associated input files.
 
@@ -248,7 +248,7 @@ output_3_visualisation
 - `function_abundance_sample.tsv`: a tabulated file containing the ratio of abundance of each function in the different sample. Rows correspond to the functions and columns correspond to the samples. It is used to create the `heatmap_abundance_samples.png` file.
 - `heatmap_abundance_samples.png`: a heatmap showing the abundance for all the HMMs searched by bigecyhmm in the different samples.
 - `cycle_abundance_sample_raw.tsv`: a tabulated file showing the abundance of major functions in biogeochemical cycles (it consists of the sum of abundance of organisms predicted to have the functions). Rows correspond to the major functions and columns correspond to the samples. Compared to `cycle_abundance_sample.tsv`, it shows the absolute abundance (without weightening by total abundance in the sample).
-- `cycle_abundance_sample.tsv`: a tabulated file showing the relative abundance of major functions in biogeochemical cycles (sum of organism abundance divided by total abudance in sample). Rows correspond to the major functions and columns correspond to the samples.
+- `cycle_abundance_sample.tsv`: a tabulated file showing the relative abundance of major functions in biogeochemical cycles (sum of organism abundance divided by total abundance in sample). Rows correspond to the major functions and columns correspond to the samples.
 - `polar_plot_abundance_samples_XXXX.png`: a polar plot showing the abundance of major functions in the sample `XXXX`.
 
 `function_occurrence` is a folder containing all visualisation associated with occurrence values. It contains:
@@ -258,7 +258,7 @@ output_3_visualisation
 - `function_occurrence.tsv`: a tabulated file containing the ratio for each function. Rows correspond to the function and the column corresponds to the community. It is used to create the `heatmap_occurrence.png` file.
 - `function_occurrence_in_organism.tsv`: a tabulated file containing the occurrence of function in each organism of the samples.
 - `heatmap_occurrence.png`: a heatmap showing the occurrence for all the HMMs searched by bigecyhmm in the community (all the input protein files).
-- `pathway_presence_in_organism.tsv`: a tabulated file containing the occurrence of cycle funcitons in each organism of the samples.
+- `pathway_presence_in_organism.tsv`: a tabulated file containing the occurrence of cycle functions in each organism of the samples.
 - `swarmplot_function_ratio_community.png`: a swarmplot showing the occurrence of major functions in the samples.
 
 `bigecyhmm_visualisation.log` is a log file.
