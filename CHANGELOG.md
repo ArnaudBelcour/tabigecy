@@ -1,5 +1,15 @@
 # Changelog
 
+# tabigecy v0.1.3 (2025-10-03)
+
+## Fix
+
+* Fix issue with change in contributors field in `nextflow.config`.
+
+## Modify
+
+* Update readme and nextflow script with license information.
+
 # tabigecy v0.1.2 (2025-09-30)
 
 ## Add
