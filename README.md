@@ -139,7 +139,7 @@ The `reference_proteins_consensus_fasta` contains the consensus proteins associa
 
 The `proteome_tax_id.tsv` file is the same than the one created in `esmecata proteomes`.
 
-`esmecata_metadata_clustering.json` is a log about the the metadata associated with the command used with EsMeCaTa and the dependencies.
+`esmecata_metadata_clustering.json` is a log file about the the metadata associated with the command used with EsMeCaTa and the dependencies.
 
 `stat_number_clustering.tsv` is a tabulated file containing the number of shared proteins found for each observation name.
 
