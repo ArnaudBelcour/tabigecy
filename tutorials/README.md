@@ -11,7 +11,20 @@ For this tutorial, semi-artificial data are used:
 - `esmecata_database.zip`: esmecata precomputed database can be downloaded from this [Zenodo archive](https://doi.org/10.5281/zenodo.13354073).
 - `esmecata_database_phyla.zip`: a secondary esmecata precomputed database made for phyla with fewer sequenced genomes. It can be downloaded from another [Zenodo archive](https://doi.org/10.5281/zenodo.17224193).
 
-This tutorial was made using EsMeCaTa version 0.6.6, bigecyhmm version 0.1.8 and tabigecy version 0.1.2.
+This tutorial was made using the following package versions (with Python `3.12.2`):
+- EsMeCaTa version `0.6.6`.
+- pandas version `2.3.3`.
+- ete4 version `4.4.0`.
+- bigecyhmm version `0.1.8`.
+- biopython version `1.85`.
+- pyhmmer version `0.11.1`.
+- Pillow version `10.1.0`.
+- tabigecy version `0.1.2` (with NextFlow version `24.10.5`).
+
+These dependencies can be installed with the following command (if you use pip):
+```sh
+pip install esmecata==0.6.6 pandas==2.3.3 ete4==4.4.0 bigecyhmm==0.1.8 biopython==1.85 pyhmmer==0.11.1 pillow==10.1.0
+```
 
 The outputs were generated using these two commands:
 
