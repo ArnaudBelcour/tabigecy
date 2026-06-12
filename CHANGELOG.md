@@ -1,5 +1,19 @@
 # Changelog
 
+# tabigecy v0.2.0 (2026-06-12)
+
+Warning: this new version of Tabigecy requires at least bigecyhmm version 0.2.0.
+
+## Add
+
+* Option to use bigecyhmm custom and a custom database (`--bigecyhmmCustomDB`).
+* Option to give sample group file to bigecyhmm visualisation (`--groupFile`).
+* Option to give background image to bigecyhmm visualisation for donut plot (`--backgroundImage`).
+
+## Modify
+
+* Update tutorial.
+
 # tabigecy v0.1.3 (2025-10-03)
 
 ## Fix

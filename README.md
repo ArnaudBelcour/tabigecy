@@ -9,7 +9,7 @@ A nextflow workflow to predict functions involving major biogeochemical cycles (
 ## Requirements
 
 - [Nextflow](https://www.nextflow.io/docs/latest/install.html): to run the workflow.
-- [esmecata](https://github.com/AuReMe/esmecata), [bigecyhmm](https://github.com/ArnaudBelcour/bigecyhmm) and several python packages for visualisation: they can be installed with the following pip command: `pip install esmecata bigecyhmm seaborn pandas`.
+- [esmecata](https://github.com/AuReMe/esmecata), [bigecyhmm](https://github.com/ArnaudBelcour/bigecyhmm) and several python packages for visualisation: they can be installed with the following pip command: `pip install esmecata bigecyhmm seaborn pandas networkx pygraphviz`.
 - esmecata precomputed database: it can be downloaded from this [Zenodo archive](https://doi.org/10.5281/zenodo.13354073). This precomputed database size is 4 Gb.
 
 ## Usage
@@ -54,6 +54,10 @@ There are optional arguments:
 
 
 - `--coreBigecyhmm`: the number of cores given to bigecyhmm for multiprocessing.
+
+- `--bigecyhmmCustomDB`: to use a custom database for bigecyhmm (see [bigecyhmm_custom documentation](https://github.com/ArnaudBelcour/bigecyhmm/tree/main#51-bigecyhmm_custom-using-custom-database)).
+
+- `--groupFile`: to group samples when performing bigecyhmm_visualisation (see [bigecyhmm_visualisation documentation](https://github.com/ArnaudBelcour/bigecyhmm/tree/main#4-bigecyhmm_visualisation))
 
 At the end, it will create an output folder containing the output folders of EsMeCaTa, the one of bigecyhmm and the visualisation output folder.
 To do this on your own file you can specify the input files with the command line:
@@ -212,19 +216,36 @@ output_3_visualisation
 │   ├── cycle_participation
 │   |   └── sample_1.tsv
 │   |   └── ...
+│   ├── cycle_taxa_abundance
+│   |   └── function_1.png
+│   |   └── function_1.tsv
+│   |   └── ...
 │   ├── function_participation
 │   |   └── sample_1.tsv
 │   |   └── ...
-│   └── barplot_esmecata_found_organism_sample.tsv
+│   ├── plot_donut
+│   |   └── cleaned_data.tsv
+│   |   └── combined_donut_table.png
+│   |   └── group_medians_donut.png
+│   |   └── group_stats_table.png
+│   |   └── group_stats.tsv
+│   ├── plot_donut_graph (if running bigecyhmm_custom)
+│   |   └── ...
+│   ├── polar_plot_abundance
+│   |   └── sample_1.png
+│   |   └── ...
 │   └── barplot_esmecata_found_taxon_sample.png
+│   └── barplot_esmecata_found_organism_sample.tsv
 │   └── barplot_esmecata_missing_organism_sample.tsv
-│   └── cycle_abundance_sample_melted.tsv
 │   └── cycle_abundance_sample.tsv
+│   └── cycle_abundance_sample_melted.tsv
 │   └── cycle_abundance_sample_raw.tsv
+│   └── cycle_pathways_bubble_plot.png
 │   └── function_abundance_sample.tsv
+│   └── function_abundance_sample_raw.tsv
 │   └── heatmap_abundance_samples.png
-│   └── polar_plot_abundance_sample_1.png
-│   └── polar_plot_abundance_sample_XXX.png
+│   └── heatmap_abundance_samples.svg
+│   └── hmm_functional_profile.tsv
 ├── function_occurrence
 │   └── cycle_occurence.tsv
 │   └── diagram_carbon_cycle.png
@@ -241,25 +262,27 @@ output_3_visualisation
 
 `function_abundance` is a folder containing all visualisation associated with abundance values. It contains:
 
-- `barplot_esmecata_found_taxon_sample.png`: a barplot displaying the coverage of EsMeCaTa according to the abundances from samples. Each bar corresponds to a sample, the y-axis shows the relative abundances of the organisms in the sample. The color indicates which taxonomic rank has been used by EsMeCaTa to predict the consensus proteomes. If EsMeCaTa was not able to predict a consensus proteomes, it is displayed in category `Not found`. With this figure, you can have an idea if there is enough predictions for the different samples in the dataset and at which taxonomic ranks these predictiosn have been made. Thus allowing the estimation of the quality of the predictions: predictions are better if they are closer to lower taxonomic ranks (genus family). `barplot_esmecata_found_organism_sample.tsv` is the input file used to create the figure.
-- `cycle_diagrams_abundance`: a folder containing 4 cycle diagrams (carbon, sulfur, nitrogen and other) from METABOLIC per sample from the abundance file. For each sample, it gives the abundance and the relative abundance (in percentage) of the major function.
-- `function_participation`: a folder containing one tabulated file per sample from the abundance file. For each sample, it gives the function abundance associated with each organism in the community.
+- `cycle_diagrams_abundance`: a folder containing 4 cycle diagrams (carbon, sulfur, nitrogen and other) from METABOLIC per sample from the abundance file. For each sample, it gives the abundance and the relative abundance of the major function.
 - `cycle_participation`: a folder containing one tabulated file per sample from the abundance file. For each sample, it gives the cycle abundance associated with each organism in the community.
-- `function_abundance_sample.tsv`: a tabulated file containing the ratio of abundance of each function in the different samples. Rows correspond to the functions and columns correspond to the samples. It is used to create the `heatmap_abundance_samples.png` file.
+- `cycle_taxa_abundance`: a folder containing one png and one tabulated file per metabolic function. They show the organims abundance identified to possess the associated metabolic functions in the samples.
+- `function_participation`: a folder containing one tabulated file per sample from the abundance file. For each sample, it gives the function abundance associated with each organism in the community.
+- `plot_donut`: a folder containing a donut plot showing metabolic abundance in samples according to group and results of statistical tests (Kruskal-Wallis with Benjamini-Hochberg correction). A background image is used to represent the studied metabolism. 
+- `plot_donut_graph` (only with `bigecyhmm_custom`): a folder containing a donut plot showing metabolic abundance in samples according to group and results of statistical tests (Kruskal-Wallis with Benjamini-Hochberg correction). A bipartite graph image is generated as a background image showing a representation of the studied metabolism.
+- `polar_plot_abundance`: a folder containing polar plots showing the abundance of major functions in each sample.
+- `barplot_esmecata_found_taxon_sample.png`: a barplot displaying the coverage of EsMeCaTa according to the abundances from samples. Each bar corresponds to a sample, the y-axis shows the relative abundances of the organisms in the sample. The color indicates which taxonomic rank has been used by EsMeCaTa to predict the consensus proteomes. If EsMeCaTa was not able to predict a consensus proteomes, it is displayed in category `Not found`. With this figure, you can have an idea if there is enough predictions for the different samples in the dataset and at which taxonomic ranks these predictions have been made. Thus allowing the estimation of the quality of the predictions: predictions are better if they are closer to lower taxonomic ranks (genus family). `barplot_esmecata_found_organism_sample.tsv` is the input file used to create the figure.
+- `barplot_esmecata_missing_organism_sample.tsv`: a tabulated file showing organisms without predictions from EsMeCaTa.
+- `function_abundance_sample.tsv`: a tabulated file containing the relative abundance of each function according to the abundance of the associated organisms in the different sample. Rows correspond to the functions and columns correspond to the samples. It is used to create the `heatmap_abundance_samples.png` file. The file `function_abundance_sample_raw.tsv` contains the absolute abundance of the functions.
 - `heatmap_abundance_samples.png`: a heatmap showing the abundance for all the HMMs searched by bigecyhmm in the different samples.
-- `cycle_abundance_sample_raw.tsv`: a tabulated file showing the abundance of major functions in biogeochemical cycles (it consists of the sum of abundance of organisms predicted to have the functions). Rows correspond to the major functions and columns correspond to the samples. Compared to `cycle_abundance_sample.tsv`, it shows the absolute abundance (without weightening by total abundance in the sample).
-- `cycle_abundance_sample.tsv`: a tabulated file showing the relative abundance of major functions in biogeochemical cycles (sum of organism abundance divided by total abundance in sample). Rows correspond to the major functions and columns correspond to the samples.
-- `polar_plot_abundance_samples_XXXX.png`: a polar plot showing the abundance of major functions in the sample `XXXX`.
+- `cycle_abundance_sample.tsv`: a tabulated file showing the relative abundance of major functions in biogeochemical cycles according to the organisms. Rows correspond to the major functions and columns correspond to the samples. The file `cycle_abundance_sample_melted.tsv` is a melted version of this file. The file `cycle_abundance_sample_raw.tsv` contains the absolute abundance of the functions.
 
 `function_occurrence` is a folder containing all visualisation associated with occurrence values. It contains:
 
 - `cycle_occurence.tsv`: a tabulated file showing the occurrence of major functions in biogeochemical cycles. Rows correspond to the major function and the column corresponds to the community.
-- `diagram_*.png`: diagram representing a biogeochemical cycles (carbon, nitrogen, sulfur, other) from METABOLIC. It shows the number of organisms with predicted major functions (*Occurrence*) and the relative occurrence (*Percentage*) of these functions.
+- `diagram_*.png`: diagram representing a biogeochemical cycles (carbon, nitrogen, sulfur, other) from METABOLIC. It shows the number of organisms with predicted major functions and the relative occurrence of these functions.
 - `function_occurrence.tsv`: a tabulated file containing the ratio for each function. Rows correspond to the function and the column corresponds to the community. It is used to create the `heatmap_occurrence.png` file.
 - `function_occurrence_in_organism.tsv`: a tabulated file containing the occurrence of function in each organism of the samples.
 - `heatmap_occurrence.png`: a heatmap showing the occurrence for all the HMMs searched by bigecyhmm in the community (all the input protein files).
 - `pathway_presence_in_organism.tsv`: a tabulated file containing the occurrence of cycle functions in each organism of the samples.
-- `swarmplot_function_ratio_community.png`: a swarmplot showing the occurrence of major functions in the samples.
 
 `bigecyhmm_visualisation.log` is a log file.
 

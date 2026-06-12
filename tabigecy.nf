@@ -1,4 +1,4 @@
-// Copyright (C) 2025 Arnaud Belcour - Univ. Grenoble Alpes, Inria, Grenoble, France Microcosme
+// Copyright (C) 2026 Arnaud Belcour - Univ. Grenoble Alpes, Inria, Grenoble, France Microcosme
 // Univ. Grenoble Alpes, Inria, Microcosme
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,6 +22,9 @@ params.precomputedDB = false
 params.outputFolder = false
 params.inAbundfile = false
 params.coreBigecyhmm = 1
+params.bigecyhmmCustomDB = false
+params.groupFile = false
+params.backgroundImage = false
 
 // Help message
 if (params.help) {
@@ -34,6 +37,9 @@ if (params.help) {
              |Optional arguments:
              |  --inAbundfile  Location of the abundance file. [default: ${params.inAbundfile}]
              |  --coreBigecyhmm  Number of core for bigecyhmm. [default: ${params.coreBigecyhmm}]
+             |  --bigecyhmmCustomDB  Path or string linked to bigecyhmm custom database. [default: ${params.bigecyhmmCustomDB}]
+             |  --groupFile  Path to tsv file grouping samples. [default: ${params.groupFile}]
+             |  --backgroundImage  Path to background image for donut plot for bigecyhmm visualisation. [default: ${params.backgroundImage}]
              |  -w            The NextFlow work directory. Delete the directory once the process
              |                is finished [default: ${workDir}]""".stripMargin()
     // Print the help with the stripped margin and exit
@@ -105,12 +111,31 @@ process bigecyhmm {
     """
 }
 
-// Create figures from esmecata and bigecyhmm output folders.
-process visualisation{
+// Run bigecyhmm custom on the predictions made by esmecata.
+process bigecyhmm_custom {
     input:
-        val input_abundance_file_path
+        path esmecata_output_folder
+        val custom_database
+        val core_bigecyhmm
+
+    output:
+        path 'output_2_bigecyhmm', emit: output_2_bigecyhmm, type: "dir"
+
+    publishDir "${params.outputFolder}", mode: 'copy'
+
+    script:
+    """
+    bigecyhmm_custom  -i ${esmecata_output_folder}/1_clustering/reference_proteins_consensus_fasta -o output_2_bigecyhmm -c ${core_bigecyhmm} -d ${custom_database}
+    """
+}
+
+// Create figures from esmecata and bigecyhmm output folders.
+process visualisation {
+    input:
+        path input_abundance_file_path
         path esmecata_output_folder
         path bigecyhmm_output_folder
+        val additional_arguments
 
     output:
         path 'output_3_visualisation', emit: output_3_visualisation, type: "dir"
@@ -119,21 +144,61 @@ process visualisation{
 
     script:
     """
-    bigecyhmm_visualisation esmecata --abundance-file ${input_abundance_file_path} --esmecata ${esmecata_output_folder} --bigecyhmm ${bigecyhmm_output_folder} -o output_3_visualisation
+    bigecyhmm_visualisation esmecata --abundance-file ${input_abundance_file_path} --esmecata ${esmecata_output_folder} --bigecyhmm ${bigecyhmm_output_folder} -o output_3_visualisation ${additional_arguments}
     """
 }
 
 workflow {
+    // Check additional arguments for bigecyhmm_visualisation or bigecyhmm_custom.
+    additional_arguments = ""
+    if (params.groupFile) {
+        groupfile = file(params.groupFile)
+        if (!groupfile.exists()) {
+            println("ERROR: Group file ${groupfile} does not exist.")
+            return
+        }
+        additional_arguments += " --group-file ${groupfile} "
+    }
+    if (params.backgroundImage) {
+        backgroundImage = file(params.backgroundImage)
+        if (!backgroundImage.exists()) {
+            println("ERROR: Background image file ${backgroundImage} does not exist.")
+            return
+        }
+        additional_arguments += " --background-file ${backgroundImage} "
+    }
+    if (params.bigecyhmmCustomDB) {
+        if (params.bigecyhmmCustomDB in ["internal_hydrogen_table", "internal_sulfur", "internal_nitrogen", "internal_phosphorus", "internal_other", "internal_all"]){
+            custom_db = params.bigecyhmmCustomDB
+        }
+        else {
+            custom_db = file(params.bigecyhmmCustomDB)
+            if (!custom_db.exists()) {
+                println("ERROR: Custom database file ${custom_db} does not exist.")
+                return
+            }
+        }  
+    }
+
     esmecata(input_file_path, precomputedDB_path)
-    bigecyhmm(esmecata.out.output_1_esmecata, params.coreBigecyhmm)
+
+    // Check the presence of custom database argument (by default no).
+    if (params.bigecyhmmCustomDB) {
+        bigecyhmm_custom(esmecata.out.output_1_esmecata, custom_db, params.coreBigecyhmm)
+        bigecyhmm_out = bigecyhmm_custom.out.output_2_bigecyhmm
+    }
+    else {
+        bigecyhmm(esmecata.out.output_1_esmecata, params.coreBigecyhmm)
+        bigecyhmm_out = bigecyhmm.out.output_2_bigecyhmm
+    }
 
     // Check the presence of abundance file (by default no such file).
     if (params.inAbundfile) {
-        input_abundance_file_path = Channel.fromPath(params.inAbundfile)
+        input_abundance_file_path = Channel.fromPath(params.inAbundfile, checkIfExists: true)
     }
     else {
         input_abundance_file_path = false
     }
 
-    visualisation(input_abundance_file_path, esmecata.out.output_1_esmecata, bigecyhmm.out.output_2_bigecyhmm)
+    visualisation(input_abundance_file_path, esmecata.out.output_1_esmecata, bigecyhmm_out, additional_arguments)
 }

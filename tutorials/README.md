@@ -8,29 +8,32 @@ For this tutorial, semi-artificial data are used:
 
 - `tutorial_example_affiliations.tsv`: input taxonomic affiliations.
 - `tutorial_example_abundance.csv`: abundance associated with the taxonomic affiliations for 5 samples.
+- `group_sample.tsv`: linking samples to different groups.
 - `esmecata_database.zip`: esmecata precomputed database can be downloaded from this [Zenodo archive](https://doi.org/10.5281/zenodo.13354073).
 - `esmecata_database_phyla.zip`: a secondary esmecata precomputed database made for phyla with fewer sequenced genomes. It can be downloaded from another [Zenodo archive](https://doi.org/10.5281/zenodo.17224193).
 
 This tutorial was made using the following package versions (with Python `3.12.2`):
-- EsMeCaTa version `0.6.6`.
+- EsMeCaTa version `0.6.12`.
 - pandas version `2.3.3`.
 - ete4 version `4.4.0`.
-- bigecyhmm version `0.1.8`.
+- bigecyhmm version `0.2.0`.
 - biopython version `1.85`.
-- pyhmmer version `0.11.1`.
+- pyhmmer version `0.12.0`.
 - Pillow version `10.1.0`.
-- tabigecy version `0.1.2` (with NextFlow version `24.10.5`).
+- matplotlib version `3.10.1`.
+- seaborn version `0.13.2`.
+- tabigecy version `0.2.0` (with NextFlow version `24.10.5`).
 
 These dependencies can be installed with the following command (if you use pip):
 ```sh
-pip install esmecata==0.6.6 pandas==2.3.3 ete4==4.4.0 bigecyhmm==0.1.8 biopython==1.85 pyhmmer==0.11.1 pillow==10.1.0
+pip install esmecata==0.6.12 pandas==2.3.3 ete4==4.4.0 bigecyhmm==0.2.0 biopython==1.85 pyhmmer==0.12.0 pillow==10.1.0 matplotlib==3.10.1 seaborn==0.13.2
 ```
 
 The outputs were generated using these two commands:
 
-- `nextflow run ../tabigecy.nf --infile input/tutorial_example_affiliations.tsv --inAbundfile input/tutorial_example_abundance.csv --precomputedDB ../esmecata_database.zip --outputFolder output_folder --coreBigecyhmm 35`
+- `nextflow run ../tabigecy.nf --infile input/tutorial_example_affiliations.tsv --inAbundfile input/tutorial_example_abundance.csv --precomputedDB ../esmecata_database.zip --outputFolder output_folder --coreBigecyhmm 35 --groupFille input/group_sample.tsv`
 
-- `nextflow run ../tabigecy.nf --infile input/tutorial_example_affiliations.tsv --inAbundfile input/tutorial_example_abundance.csv --precomputedDB "../esmecata_database.zip ../esmecata_database_phyla.zip" --outputFolder output_folder_2 --coreBigecyhmm 35`
+- `nextflow run ../tabigecy.nf --infile input/tutorial_example_affiliations.tsv --inAbundfile input/tutorial_example_abundance.csv --precomputedDB "../esmecata_database.zip ../esmecata_database_phyla.zip" --outputFolder output_folder_2 --coreBigecyhmm 35 --groupFille input/group_sample.tsv`
 
 ## EsMeCaTa coverage of the samples
 
@@ -249,20 +252,7 @@ These different values can be seen in the diagram figures located at `output_fol
 
 *Abundance* corresponds to the absolute abundance associated with organisms linked to the functions. *Percentage* corresponds to the relative abundance multiplied by 100.
 
-The relative abundance is also shown in the polar plot `output_folder/output_3_visualisation/function_abundance/polar_plot_abundance_sample_XXX.png`:
-Relative abundance goes from 0 to 1 and each function is set on the angular axis.
+The relative abundance is shown in the donut plot `output_folder/output_3_visualisation/function_abundance/combined_donut_table.png`:
+Relative abundance goes from 0 to 1 and each function is set on the angular axis. In this figure, samples from the same group are shown together (line). This line corresponds to the mean of the metabolic abundances of the different samples present in a group. Each value for a single sample is shown as a dot.
 
-Sample 1:
-![](pictures/5_polar_plot_abundance_sample_S1.png)
-
-Sample 2:
-![](pictures/5_polar_plot_abundance_sample_S2.png)
-
-Sample 3:
-![](pictures/5_polar_plot_abundance_sample_S3.png)
-
-Sample 4:
-![](pictures/5_polar_plot_abundance_sample_S4.png)
-
-Sample 5:
-![](pictures/5_polar_plot_abundance_sample_S5.png)
+![](pictures/combined_donut_table.png)
