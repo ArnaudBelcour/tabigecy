@@ -55,7 +55,7 @@ There are optional arguments:
 
 - `--coreBigecyhmm`: the number of cores given to bigecyhmm for multiprocessing.
 
-- `--bigecyhmmCustomDB`: to use a custom database for bigecyhmm (see [bigecyhmm_custom documentation](https://github.com/ArnaudBelcour/bigecyhmm/tree/main#51-bigecyhmm_custom-using-custom-database)).
+- `--bigecyhmmCustomDB`: to use a custom database for bigecyhmm (see [bigecyhmm_custom documentation](https://github.com/ArnaudBelcour/bigecyhmm/tree/main#52-bigecyhmm_custom-using-custom-database)).
 
 - `--groupFile`: to group samples when performing bigecyhmm_visualisation (see [bigecyhmm_visualisation documentation](https://github.com/ArnaudBelcour/bigecyhmm/tree/main#4-bigecyhmm_visualisation))
 
