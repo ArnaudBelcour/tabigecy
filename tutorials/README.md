@@ -31,9 +31,9 @@ pip install esmecata==0.6.12 pandas==2.3.3 ete4==4.4.0 bigecyhmm==0.2.0 biopytho
 
 The outputs were generated using these two commands:
 
-- `nextflow run ../tabigecy.nf --infile input/tutorial_example_affiliations.tsv --inAbundfile input/tutorial_example_abundance.csv --precomputedDB ../esmecata_database.zip --outputFolder output_folder --coreBigecyhmm 35 --groupFille input/group_sample.tsv`
+- `nextflow run ../tabigecy.nf --infile input/tutorial_example_affiliations.tsv --inAbundfile input/tutorial_example_abundance.csv --precomputedDB ../esmecata_database.zip --outputFolder output_folder --coreBigecyhmm 5 --groupFile input/group_sample.tsv`
 
-- `nextflow run ../tabigecy.nf --infile input/tutorial_example_affiliations.tsv --inAbundfile input/tutorial_example_abundance.csv --precomputedDB "../esmecata_database.zip ../esmecata_database_phyla.zip" --outputFolder output_folder_2 --coreBigecyhmm 35 --groupFille input/group_sample.tsv`
+- `nextflow run ../tabigecy.nf --infile input/tutorial_example_affiliations.tsv --inAbundfile input/tutorial_example_abundance.csv --precomputedDB "../esmecata_database.zip ../esmecata_database_phyla.zip" --outputFolder output_folder_2 --coreBigecyhmm 5 --groupFile input/group_sample.tsv`
 
 ## EsMeCaTa coverage of the samples
 
@@ -72,7 +72,7 @@ Issue 5 requires to run EsMeCaTa with less stringent parameters. A small EsMeCaT
 
 In our example, there was not enough proteomes for the `Gracilibacteria` taxon so it is not present in the precomputed database. Another precomputed database specific to poorly characterised has been generated and contains this taxon. Tabigecy can combined several precomputed databases with the following command:
 
-`nextflow run ../tabigecy.nf --infile input/tutorial_example_affiliations.tsv --inAbundfile input/tutorial_example_abundance.csv --precomputedDB "../esmecata_database.zip ../esmecata_database_phyla.zip" --outputFolder output_folder_2 --coreBigecyhmm 35`
+`nextflow run ../tabigecy.nf --infile input/tutorial_example_affiliations.tsv --inAbundfile input/tutorial_example_abundance.csv --precomputedDB "../esmecata_database.zip ../esmecata_database_phyla.zip" --outputFolder output_folder_2 --coreBigecyhmm 5`
 
 Tabigecy uses the second database `esmecata_database_phyla` to make predictions for `Gracilibacteria` and this can be seen in the `barplot_esmecata_found_taxon_sample.png` file:
 
